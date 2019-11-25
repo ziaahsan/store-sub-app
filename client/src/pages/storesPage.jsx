@@ -21,10 +21,10 @@ class FeatureStore extends React.Component {
         return (
             <div className="store-card">
                 <div className="uk-card uk-card-default">
-                    <div class="uk-card-media-top">
+                    <div className="uk-card-media-top">
                         <img src={store.image} alt=""/>
                     </div>
-                    <div className="uk-padding-small">
+                    <div className="uk-padding">
                         <h3 className="uk-card-title uk-margin-remove" style={{color:store.logoColor}}>
                             <b>{renderHTML(store.nickName)}</b>
                         </h3>
@@ -44,8 +44,8 @@ class FeatureStore extends React.Component {
                                 to={`/store/${store.token}`}>
                                 View {renderHTML(store.nickName)}
                             </Link>
-                            <button className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right">
-                                Subscribe
+                            <button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize uk-margin-small-right">
+                                Watch
                             </button>
                         </div>
                     </div>
@@ -85,8 +85,8 @@ class Store extends React.Component {
                             to={`/store/${store.token}`}>
 							View {renderHTML(store.nickName)}
 						</Link>
-                        <button className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right">
-							Subscribe
+                        <button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize uk-margin-small-right">
+							Watch
 						</button>
 					</div>
                 </div>
@@ -111,7 +111,7 @@ class StoresPage extends React.Component {
 
     // Fetch the stores from api databse
     async getStoresByTag() {
-        let feature = await StoreService.getStoresByTag("feature");
+        let feature = await StoreService.getStoresByTag("store,featured");
         let store = await StoreService.getStoresByTag("store");
 
         // Update the state
@@ -128,8 +128,8 @@ class StoresPage extends React.Component {
 	notify(text, status) {
 		// Make message
 		let str = `
-        <div class="uk-text-left">
-			<p class="uk-margin-remove uk-text-small">${text}</p>
+        <div className="uk-text-left">
+			<p className="uk-margin-remove uk-text-small">${text}</p>
 		</div>`;
 
 		// Send notification using UIkit
@@ -197,7 +197,7 @@ class StoresPage extends React.Component {
                 <div className="uk-width-1-1">
                     <div>
                         <h1 className="uk-margin-remove">
-                            <b>Live Subscription</b>
+                            <b>Watch for Updates</b>
                         </h1>
                         <p className="uk-margin-remove-top">Subscribe to any product and get live updates wherever you are.</p>
                     </div>
@@ -224,7 +224,7 @@ class StoresPage extends React.Component {
                     {/* Featured Component */}
                     <div>
                         <h3 className="uk-card-title uk-margin-remove">
-                            <b>Featured</b>
+                            <b>Featured Stores</b>
                         </h3>
                     </div>
                     <div className="uk-margin">

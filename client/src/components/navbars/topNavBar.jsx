@@ -6,7 +6,7 @@ export default class TopNavBar extends React.Component {
     render() {
         return(
             <div className="uk-width-1-1">
-                <div className="uk-container uk-padding-remove">
+                <div className="uk-container uk-container-large uk-padding-remove">
                     <div>
                         <nav className="uk-navbar-container uk-height-auto" uk-navbar="mode: click">
                             <div className="nav-overlay uk-navbar-left uk-width-expand">

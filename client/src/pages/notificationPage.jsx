@@ -1,4 +1,5 @@
 import React from 'react';
+import IframeResizer from 'iframe-resizer-react'
 import { format } from 'timeago.js';
 
 // Components
@@ -21,7 +22,7 @@ class NotificationPage extends React.Component {
 		this.state = {
 			isLoading: true,
 			notificationToken: this.props.match.params.notificationToken,
-			notification: null,
+			notification: null
 		}
     }
 
@@ -84,6 +85,9 @@ class NotificationPage extends React.Component {
                         </div>
                     </div>
                     <div className="store-notification uk-margin uk-card uk-card-default uk-card-body">
+						<IframeResizer
+							srcDoc={notification.html}
+							style={{ width: '1px', minWidth: '100%'}} />
                     </div>
 				</div>
 			</div>
