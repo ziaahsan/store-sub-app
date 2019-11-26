@@ -15,6 +15,7 @@ class App extends React.Component {
 			<Router>
 				<TopNavBar />
 				<Switch>
+					<Route exact path="/"component={StoresPage} />
 					<Route exact path="/stores"component={StoresPage} />
 					<Route exact path="/store/:storeToken" component={StorePage} />
 					<Route exact path="/notification/:notificationToken" component={NotificationPage} />

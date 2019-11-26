@@ -59,9 +59,9 @@ class StoreModel {
     }
 
     // Get a stores by tag
-    static getByTag(tag, result) {
+    static getByTag(tag, limit, offset, result) {
         tag = `%${tag}%`
-        database.query("SELECT * FROM `ma_stores` WHERE tags LIKE ?", tag, (error, res) => {
+        database.query("SELECT * FROM `ma_stores` WHERE tags LIKE ? LIMIT ?, ?", [tag, offset, limit], (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);

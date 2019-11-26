@@ -8,8 +8,8 @@ export default {
     },
 
     // Get all store by tags
-    getStoresByTag: async (tag) => {
-        let stores = await axios.get('/api/stores/tag/' + tag);
+    getStoresByTags: async (tags, offset=0) => {
+        let stores = await axios.get(`/api/stores/tag/${tags}/${offset}`);
         return stores || [];
     },
     

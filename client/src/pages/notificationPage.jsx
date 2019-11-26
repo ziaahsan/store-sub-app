@@ -3,8 +3,9 @@ import IframeResizer from 'iframe-resizer-react'
 import { format } from 'timeago.js';
 
 // Components
-import LoadingPage from '../components/misc/loadingPage';
 import UIkit from 'uikit';
+import LoadingPage from '../components/miscs/loadingPage';
+
 
 // Services
 import StoreService from '../services/storeService';
@@ -86,8 +87,11 @@ class NotificationPage extends React.Component {
                     </div>
                     <div className="store-notification uk-margin uk-card uk-card-default uk-card-body">
 						<IframeResizer
+							id="store-newslettter"
+							log
+							autoResize="true"
 							srcDoc={notification.html}
-							style={{ width: '1px', minWidth: '100%'}} />
+							style={{ width: '1px', minWidth: '100%', minHeight: "100%"}} />
                     </div>
 				</div>
 			</div>

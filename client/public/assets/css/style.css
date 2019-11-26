@@ -36,14 +36,15 @@ code {
 		}
 	/*Button*/
 		.uk-button-default {
+			box-shadow: 0 1px 1px 0 rgba(60, 66, 87, .12), 0 1px 0px 0 rgba(0, 0, 0, .12);
+			background: #ffffff;
 			border-radius: 4px;
-			color: #333333;
+			color: #4b5260;
 			font-weight: 500;
-			text-transform: none;
-			background-color: transparent;
-			border: 1px solid #e5e5e5;
+			border-color: #b2b2b2;
 		}
-		.uk-button-primary {
+		.uk-button-primary,
+		.uk-button-primary:hover {
 			box-shadow: 0 1px 1px 0 rgba(60, 66, 87, .12), 0 1px 0px 0 rgba(0, 0, 0, .12);
 			background: #f7fafc;
 			border-radius: 4px;
@@ -51,14 +52,35 @@ code {
 			font-weight: 500;
 			border-color: #b2b2b2;
 		}
+		.uk-button-primary:hover{
+			background: #ffffff;
+			border-color: #999;
+			color: #4b5260;
+		}
 		.uk-button-orange {
-			box-shadow: 0 1px 2px 0 #ae1d0f;
-			background: #ee4534;
+			box-shadow: 0 5px 30px rgba(0,0,0,.3);
+			background: #f22f46;
 			border-radius: 4px;
-			color: #fef1f0;
+    		color: hsla(0,0%,100%,.85);
 			font-weight: 500;
 			text-transform: none;
-			border: 1px solid #ae1d0f;
+		}
+		.uk-button-blue {
+			box-shadow: 0 5px 30px rgba(0,0,0,.3);
+			background: #1e87f0;
+			border-radius: 4px;
+    		color: hsla(0,0%,100%,.85);
+			font-weight: 500;
+			text-transform: none;
+		}
+		.uk-button-purple {
+			box-shadow: 0 1px 2px 0 #4642c5;
+			background: #5f5ccd;
+			border-radius: 4px;
+			color: #ffffff;
+			font-weight: 500;
+			text-transform: none;
+			border: 1px solid #4642c5;
 		}
 		.uk-button-secondary {
 			box-shadow: 0 1px 2px 0 #0d65bd;

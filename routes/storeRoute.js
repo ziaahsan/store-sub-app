@@ -14,9 +14,9 @@ module.exports = (app) => {
     });
 
     // Get :tag stores
-    app.get('/api/stores/tag/:tag', async(req, res) => {
-        const {tag} = req.params;
-        StoreModel.getByTag(tag, (error, store) => {
+    app.get('/api/stores/tag/:tag/:offset', async(req, res) => {
+        const {tag, offset} = req.params;
+        StoreModel.getByTag(tag, 6, parseInt(offset), (error, store) => {
             store = JSON.parse(store);
 
             if (error) res.status(400).send(error);

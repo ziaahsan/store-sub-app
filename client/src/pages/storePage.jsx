@@ -3,27 +3,15 @@ import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
 
 // Components
-import LoadingPage from '../components/misc/loadingPage';
-import NoStoreFound from '../components/misc/noStoreFound';
+import LoadingPage from '../components/miscs/loadingPage';
+import LoadingSpinner from '../components/miscs/loadingSpinner';
+import NoStoreFound from '../components/miscs/noStoreFound';
 
 // Services
 import StoreService from '../services/storeService';
 
 // Render HTML entities
 const renderHTML = (rawHTML) => React.createElement("span", { dangerouslySetInnerHTML: { __html: rawHTML } });
-
-// Spinner for when component is loading on this page
-class LoadingComponent extends React.Component {
-	render() {
-		return (
-			<div>
-				<div className="uk-text-right">
-					<div uk-spinner="true"></div>
-				</div>
-			</div>
-		)
-	}
-}
 
 // Store notifications component
 class StoreNotifications extends React.Component {
@@ -66,7 +54,7 @@ class StoreNotifications extends React.Component {
 		if (isLoading) {
 			// Showing loading
 			return (
-				<LoadingComponent />
+				<LoadingSpinner />
 			);
 		} else if (notifications == null) {
 			// Nothing found message
@@ -167,8 +155,8 @@ class StorePage extends React.Component {
 						<div>
 							<div>
 								<div className="uk-float-right">
-									<button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize uk-margin-small-right">
-										🔔 Subscription
+									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize uk-margin-small-right">
+										Watch {renderHTML(store.nickName)}
 									</button>
 								</div>
 								<h3 className="uk-card-title uk-margin-remove" style={{color:store.logoColor}}>
