@@ -45,7 +45,7 @@ class ExplorePage extends React.Component {
                             Viewing all the stores for category.
                         </p>
                     </div>
-                    <Stores type="explore" tags={this.tags} limit="50"/>
+                    <Stores type="explore" tags={this.tags}/>
                 </div>
             </div>
         );

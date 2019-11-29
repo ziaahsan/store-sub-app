@@ -77,7 +77,7 @@ class Featured extends React.Component {
                         Object.keys(stores).map((index, key) => {
                             let store = stores[key];
                             return (
-                                <div key={index} className="store-featured-card">
+                                <div key={`${this.type}.${index}`} className="store-featured-card">
                                     <div className="uk-card uk-card-default">
                                         <div className="uk-card-media-top">
                                             <img src={store.image} alt=""/>

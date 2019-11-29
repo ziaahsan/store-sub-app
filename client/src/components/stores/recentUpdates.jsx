@@ -91,9 +91,6 @@ class RecentUpdates extends React.Component {
 			isLoading: true,
 			stores: null
         };
-
-        // Adding event source
-		this.eventSource = new EventSource("http://192.168.2.31:5000/sse");
     }
 
     // Fetch the stores from api databse
@@ -139,7 +136,7 @@ class RecentUpdates extends React.Component {
                         Object.keys(stores).map((index, key) => {
                             let store = stores[key];
                             return (
-                                <span key={index} className="store-recent-card">
+                                <span key={`${this.type}.${index}`} className="store-recent-card">
                                     <div className="uk-card uk-card-default">
                                         <div className="uk-padding-small">
                                             <div className="uk-float-right uk-position-absolute" style={{top: "-10px", right: "-4px"}}>

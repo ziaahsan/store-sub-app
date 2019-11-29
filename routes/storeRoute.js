@@ -20,7 +20,7 @@ module.exports = (app) => {
 
         // Get limit and check
         limit = parseInt(limit);
-        if (isNaN(limit) || limit < 0)
+        if (isNaN(limit) || limit < 0 || limit > 50)
             limit = 6;
 
         // Get offset and check
