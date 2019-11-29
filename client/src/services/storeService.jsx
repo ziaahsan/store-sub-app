@@ -1,15 +1,13 @@
 import axios from 'axios';
 
 export default {
-    // Get all store service
-    getStores: async () => {
-        let stores = await axios.get('/api/stores');
-        return stores || [];
-    },
+      // Get all store by tags
+    getStoresByTags: async (tags, page, orderby, limit) => {
+        tags = encodeURIComponent(tags);
+        page = encodeURIComponent(page);
+        orderby = encodeURIComponent(orderby);
 
-    // Get all store by tags
-    getStoresByTags: async (tags, offset=0) => {
-        let stores = await axios.get(`/api/stores/tag/${tags}/${offset}`);
+        let stores = await axios.get(`/api/stores/tag?name=${tags}&page=${page}&orderby=${orderby}&limit=${limit}`);
         return stores || [];
     },
     

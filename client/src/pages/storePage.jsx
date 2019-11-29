@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
 
-// Components
-import LoadingPage from '../components/miscs/loadingPage';
-import LoadingSpinner from '../components/miscs/loadingSpinner';
-import NoStoreFound from '../components/miscs/noStoreFound';
+// Page Components
+import RecentUpdates from '../components/stores/recentUpdates';
+
+// Loaders Component
+import LoadingPage from '../components/loaders/loadingPage';
+import LoadingComponent from '../components/loaders/loadingComponent';
+
+// Error component
+import NoStoreFound from '../components/error/noStoreFound';
 
 // Services
 import StoreService from '../services/storeService';
@@ -54,7 +59,7 @@ class StoreNotifications extends React.Component {
 		if (isLoading) {
 			// Showing loading
 			return (
-				<LoadingSpinner />
+				<LoadingComponent />
 			);
 		} else if (notifications == null) {
 			// Nothing found message
@@ -72,19 +77,23 @@ class StoreNotifications extends React.Component {
 				let posted = format(new Date(notification.deliveredDate).toLocaleString());
 				return (
 					<div className="store-notification uk-margin" key={index}>
-						<div className="uk-float-right">
-							<Link
-								to={`/notification/${notification.token}`}
-								className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right"
-							>
-								View
-							</Link>
+						<div className="uk-flex uk-flex-middle uk-grid-small" uk-grid="true">
+							<div className="uk-width-expand">
+								<h4 className="uk-margin-remove">
+									{renderHTML(notification.subject)}
+								</h4>
+								<p className="uk-margin-remove uk-text-truncate">{renderHTML(notification.message)}</p>
+								<p className="uk-margin-remove uk-text-small">{posted}</p>
+							</div>
+							<div className="uk-width-small uk-text-right">
+								<Link
+									to={`/notification/${notification.token}`}
+									className="uk-button uk-button-small uk-button-default uk-text-capitalize"
+								>
+									View Update
+								</Link>
+							</div>
 						</div>
-						<h4 className="uk-margin-remove">
-							{renderHTML(notification.subject)}
-						</h4>
-						<p className="uk-margin-remove">{renderHTML(notification.message)}</p>
-						<p className="uk-margin-remove uk-text-small">{posted}</p>
 					</div>
 				);
 			})
@@ -154,11 +163,6 @@ class StorePage extends React.Component {
 						{/* Store Component */}
 						<div>
 							<div>
-								<div className="uk-float-right">
-									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize uk-margin-small-right">
-										Watch {renderHTML(store.nickName)}
-									</button>
-								</div>
 								<h3 className="uk-card-title uk-margin-remove" style={{color:store.logoColor}}>
 									<b>{renderHTML(store.nickName)}</b>
 								</h3>
@@ -170,6 +174,14 @@ class StorePage extends React.Component {
 						{/* Notification Component */}
 						<div className="store-notifications uk-margin uk-card uk-card-default uk-card-body">
 							<div>
+								<div className="uk-float-right">
+									<button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize uk-margin-small-right">
+										Watch {renderHTML(store.nickName)}
+									</button>
+									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize">
+										More
+									</button>
+								</div>
 								<h5 className="uk-margin-remove">
 									<b>Updates</b>
 								</h5>
@@ -181,10 +193,16 @@ class StorePage extends React.Component {
 							</div>
 						</div>
 					</div>
-					{/* Footer */}
-					<div className="uk-margin-medium uk-text-center uk-width-medium uk-align-center">
-						<p className="uk-text-small">You may unsubscribe from this store anytime. For more questions visit FAQ's or contact us.</p>
+				</div>
+
+				{/* Recent updates from similar store */}
+				<div>
+					<div>
+						<h2 className="uk-margin-remove">
+							<b>Similar Store Updates</b>
+						</h2>
 					</div>
+					<RecentUpdates type='Stores' tags="store" />
 				</div>
 			</div>
 		);

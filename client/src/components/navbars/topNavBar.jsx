@@ -26,7 +26,9 @@ export default class TopNavBar extends React.Component {
                                         <span>
                                             No signup required.
                                         </span>
-                                        <button className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-margin-small-left">
+                                        <button
+                                            to="/login"
+                                            className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-margin-small-left">
                                             Login
                                         </button>
                                     </li>

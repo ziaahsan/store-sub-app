@@ -35,6 +35,8 @@ class MailNotifierModel {
                 html: mail.html,
                 deliveredDate: mail.headers.date
             }
+
+            console.log("Mail Incoming from: " + emailData.from);
             
             // Get store based on email
             StoreModel.getByEmail(emailData.from, (error, store) => {

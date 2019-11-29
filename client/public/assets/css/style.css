@@ -69,12 +69,12 @@ code {
 			box-shadow: 0 5px 30px rgba(0,0,0,.3);
 			background: #1e87f0;
 			border-radius: 4px;
-    		color: hsla(0,0%,100%,.85);
+    		color: hsla(0,0%,100%,.85)!important;
 			font-weight: 500;
 			text-transform: none;
 		}
 		.uk-button-purple {
-			box-shadow: 0 1px 2px 0 #4642c5;
+			box-shadow: 0 5px 30px rgba(0,0,0,.3);
 			background: #5f5ccd;
 			border-radius: 4px;
 			color: #ffffff;
@@ -119,4 +119,9 @@ code {
 		border-bottom-color: #ffffff;
 		left: 2%;
 		right: 0;
+	}
+	/*fonts*/
+	.blokk-font {
+		font-family: "BLOKK";
+		color: #dddddd!important;
 	}

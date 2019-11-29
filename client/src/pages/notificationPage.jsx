@@ -2,10 +2,8 @@ import React from 'react';
 import IframeResizer from 'iframe-resizer-react'
 import { format } from 'timeago.js';
 
-// Components
-import UIkit from 'uikit';
-import LoadingPage from '../components/miscs/loadingPage';
-
+// Loaders component
+import LoadingPage from '../components/loaders/loadingPage';
 
 // Services
 import StoreService from '../services/storeService';
@@ -18,7 +16,8 @@ class NotificationPage extends React.Component {
     constructor(props) {
         super(props);
         // Type
-        this.type='notificationPage'
+		this.type='notificationPage'
+		
         // initial state of component
 		this.state = {
 			isLoading: true,

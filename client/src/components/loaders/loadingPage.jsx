@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Loading component
-export default class LoadingPage extends React.Component {
+class LoadingPage extends React.Component {
     render() {
         return (
             <div>
@@ -12,3 +12,6 @@ export default class LoadingPage extends React.Component {
         );
     }
 }
+
+// Export module
+export default LoadingPage;
