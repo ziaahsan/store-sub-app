@@ -1,6 +1,11 @@
 import React from 'react';
 import 'uikit';
 
+// Loaders component
+import LoadingStoreCard from '../components/loaders/loadingStoreCard';
+import LoadingFeaturedCard from '../components/loaders/loadingFeaturedCard';
+import LoadingRecentUpdatesCard from '../components/loaders/loadingRecentUpdatesCard';
+
 // Stores component
 import RecentUpdates from '../components/cards/recentUpdates';
 import Stores from '../components/cards/stores';
@@ -31,7 +36,9 @@ class StoresPage extends React.Component {
                                 Find out what's happened over the last 7 days.
                             </p>
                         </div>
-                        <RecentUpdates type='Stores' tags="store" />
+                        <RecentUpdates type='Stores' tags="store">
+                            <LoadingRecentUpdatesCard />
+                        </RecentUpdates>
                     </div>
 
                     {/* Stores Component */}
@@ -41,7 +48,9 @@ class StoresPage extends React.Component {
                                 <b>Popular Stores</b>
                             </h2>
                         </div>
-                        <Stores type='Stores' tags="store" />
+                        <Stores type='Stores' tags="store">
+                            <LoadingStoreCard />
+                        </Stores>
                     </div>
 
                     {/* Featured Component */}
@@ -51,7 +60,9 @@ class StoresPage extends React.Component {
                                 <b>Featured</b>
                             </h2>
                         </div>
-                        <Featured type='Featured' tags="featured" />
+                        <Featured type='Featured' tags="featured">
+                            <LoadingFeaturedCard />
+                        </Featured>
                     </div>
 
                      {/* Techy Component */}
@@ -61,7 +72,9 @@ class StoresPage extends React.Component {
                                 <b>Websites</b>
                             </h2>
                         </div>
-                        <Stores type='Website' tags="website" />
+                        <Stores type='Website' tags="website">
+                            <LoadingStoreCard />
+                        </Stores>
                     </div>
                 </div>
             </div>

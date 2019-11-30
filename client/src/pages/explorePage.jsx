@@ -1,6 +1,9 @@
 import React from 'react';
 import 'uikit';
 
+// Loaders component
+import LoadingStoreCard from '../components/loaders/loadingStoreCard';
+
 // Stores component
 import Stores from '../components/cards/stores';
 
@@ -45,7 +48,9 @@ class ExplorePage extends React.Component {
                             Viewing all the stores for category.
                         </p>
                     </div>
-                    <Stores type="explore" tags={this.tags}/>
+                    <Stores type="explore" tags={this.tags}>
+                        <LoadingStoreCard/>
+                    </Stores>
                 </div>
             </div>
         );

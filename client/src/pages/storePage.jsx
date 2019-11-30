@@ -7,7 +7,8 @@ import RecentUpdates from '../components/cards/recentUpdates';
 
 // Loaders Component
 import LoadingPage from '../components/loaders/loadingPage';
-import LoadingComponent from '../components/loaders/loadingComponent';
+import LoadingSpinner from '../components/loaders/loadingSpinner';
+import LoadingRecentUpdatesCard from '../components/loaders/loadingRecentUpdatesCard';
 
 // Error component
 import NoStoreFound from '../components/error/noStoreFound';
@@ -59,7 +60,7 @@ class StoreNotifications extends React.Component {
 		if (isLoading) {
 			// Showing loading
 			return (
-				<LoadingComponent />
+				<LoadingSpinner />
 			);
 		} else if (notifications == null) {
 			// Nothing found message
@@ -150,6 +151,13 @@ class StorePage extends React.Component {
 		// Show store
 		return (
 			<div className="uk-container uk-container-large">
+				<div className="uk-position-top-center uk-box-shadow-small" style={{top: '22px'}}>
+					<div class="uk-text-left uk-notification-message" style={{padding: '8px'}}>
+						<p class="uk-margin-remove uk-text-small">
+							Stop Viewing <span className="uk-text-capitalize">{renderHTML(store.name)}</span>
+						</p>
+					</div>
+				</div>
 				<div className="uk-width-1-1">
 					<div>
 						<h1 className="uk-margin-remove">
@@ -202,7 +210,9 @@ class StorePage extends React.Component {
 							<b>Similar Store Updates</b>
 						</h2>
 					</div>
-					<RecentUpdates type='Stores' tags="store" />
+					<RecentUpdates type='Stores' tags="store">
+						<LoadingRecentUpdatesCard />
+					</RecentUpdates>
 				</div>
 			</div>
 		);

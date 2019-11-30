@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Components
-import LoadingComponent from '../loaders/loadingComponent';
 
 // Service
 import StoreService from '../../services/storeService';
@@ -59,7 +57,7 @@ class Featured extends React.Component {
 		// Check loading, or null store
 		if (isLoading) {
 			return (
-				<LoadingComponent />
+				this.props.children
 			);
 		} else if (stores == null) {
 			return (
@@ -94,7 +92,7 @@ class Featured extends React.Component {
                                             <span> &middot; </span>
                                             <span className="uk-margin-small uk-text-small">
                                                 <Link to="/" className="uk-link uk-link-text">
-                                                    Visit StoreService
+                                                    Visit Store
                                                 </Link>
                                             </span>
                                             <div className="uk-margin">
@@ -103,7 +101,7 @@ class Featured extends React.Component {
                                                     to={`/store/${store.slug}`}>
                                                     View Store
                                                 </Link>
-                                                <button style={{maxWidth: '135px'}} className="uk-width-expand uk-width-small uk-button uk-button-small uk-button-orange uk-text-capitalize uk-margin-small-right uk-text-truncate">
+                                                <button style={{maxWidth: '135px'}} className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-text-truncate">
                                                     Watch {renderHTML(store.name)}
                                                 </button>
                                             </div>
