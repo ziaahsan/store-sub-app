@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
 
 // Page Components
-import RecentUpdates from '../components/stores/recentUpdates';
+import RecentUpdates from '../components/cards/recentUpdates';
 
 // Loaders Component
 import LoadingPage from '../components/loaders/loadingPage';
@@ -108,15 +108,15 @@ class StorePage extends React.Component {
 		this.type = 'store';
 		this.state = {
 			isLoading: true,
-			storeToken: this.props.match.params.storeToken,
+			slug: this.props.match.params.slug,
 			store: null
 		}
 	}
 
-	// Fetch store from api using :storeToken
+	// Fetch store from api using :slug
 	async getStore() {
-		let {storeToken} = this.state;
-		let response = await StoreService.getStore(storeToken);
+		let {slug} = this.state;
+		let response = await StoreService.getStoreBySlug(slug);
 
 		// Update the state
 		this.setState({
@@ -134,7 +134,7 @@ class StorePage extends React.Component {
 	// OnDraw
 	render() {
 		// Get state Vars
-		let {isLoading, store, storeToken} = this.state;
+		let { isLoading, store } = this.state;
 
 		// Check loading, or null store
 		if (isLoading) {
@@ -153,7 +153,7 @@ class StorePage extends React.Component {
 				<div className="uk-width-1-1">
 					<div>
 						<h1 className="uk-margin-remove">
-							<b>Viewing Store</b>
+							<b>Viewing <span className="uk-text-capitalize">{store.category}</span></b>
 						</h1>
 						<p className="uk-margin-remove-top">Recieve <span style={{color: "#f3003f"}}>real-time</span> notifications
 							from this store when you subscribe.</p>
@@ -163,11 +163,11 @@ class StorePage extends React.Component {
 						{/* Store Component */}
 						<div>
 							<div>
-								<h3 className="uk-card-title uk-margin-remove" style={{color:store.logoColor}}>
-									<b>{renderHTML(store.nickName)}</b>
+								<h3 className="uk-card-title uk-margin-remove">
+									<b>{renderHTML(store.name)}</b>
 								</h3>
 								<p className="uk-margin-remove">
-									<i>{renderHTML(store.slogan)}</i>
+									<i>{renderHTML(store.description)}</i>
 								</p>
 							</div>
 						</div>
@@ -176,7 +176,7 @@ class StorePage extends React.Component {
 							<div>
 								<div className="uk-float-right">
 									<button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize uk-margin-small-right">
-										Watch {renderHTML(store.nickName)}
+										Watch {renderHTML(store.name)}
 									</button>
 									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize">
 										More
@@ -189,7 +189,7 @@ class StorePage extends React.Component {
 							</div>
 							<hr/>
 							<div className="uk-margin">
-								<StoreNotifications storeToken={`${storeToken}`} />
+								<StoreNotifications storeToken={`${store.token}`} />
 							</div>
 						</div>
 					</div>

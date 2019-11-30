@@ -2,9 +2,9 @@ import React from 'react';
 import 'uikit';
 
 // Stores component
-import RecentUpdates from '../components/stores/recentUpdates';
-import Stores from '../components/stores/stores';
-import Featured from '../components/stores/featured';
+import RecentUpdates from '../components/cards/recentUpdates';
+import Stores from '../components/cards/stores';
+import Featured from '../components/cards/featured';
 
 // Stores Page
 class StoresPage extends React.Component {    
@@ -58,10 +58,10 @@ class StoresPage extends React.Component {
                     <div>
                         <div>
                             <h2 className="uk-margin-remove">
-                                <b>Techy</b>
+                                <b>Websites</b>
                             </h2>
                         </div>
-                        <Stores type='Techy' tags="techy" />
+                        <Stores type='Website' tags="website" />
                     </div>
                 </div>
             </div>

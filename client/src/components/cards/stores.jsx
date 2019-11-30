@@ -20,9 +20,8 @@ class StoresLoader extends React.Component {
         for (let i = 0; i < 6; i++) {
             let data = {
                 notifications: 0,
-                logoColor: '#000000',
-                nickName: 'Store',
-                slogan: 'No description provided.'
+                name: 'Store',
+                description: 'No description provided.'
             }
             this.holder.push(data);
         }
@@ -51,17 +50,19 @@ class StoresLoader extends React.Component {
                             <div className="uk-card uk-card-body uk-card-default">
                                 <div>
                                     <h3 className="blokk-font uk-card-title uk-margin-remove" style={{color:store.logoColor}}>
-                                        <b>{renderHTML(store.nickName)}</b>
+                                        <b>{renderHTML(store.name)}</b>
                                     </h3>
                                     <p className="blokk-font uk-margin-remove">
-                                        <i>{renderHTML(store.slogan)}</i>
+                                        <i>{renderHTML(store.description)}</i>
                                     </p>
                                     <span className="blokk-font uk-margin-small uk-text-small">
                                         <Link to="/" className="uk-link uk-link-text">{store.notifications} Notificaions</Link>
                                     </span>
                                     <span> &middot; </span>
                                     <span className="uk-margin-small uk-text-small">
-                                        <a className="blokk-font uk-link uk-link-text" herf={store.website} target="_blank">Visit Store</a>
+                                        <Link to="/" className="blokk-font uk-link uk-link-text">
+                                            Visit Store
+                                        </Link>
                                     </span>
                                 </div>
                                 <div className="uk-margin uk-text-left">
@@ -71,7 +72,7 @@ class StoresLoader extends React.Component {
                                         View Store
                                     </Link>
                                     <button className="blokk-font uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right">
-                                        Watch {renderHTML(store.nickName)}
+                                        Watch {renderHTML(store.name)}
                                     </button>
                                 </div>
                             </div>
@@ -132,28 +133,30 @@ class Stores extends React.Component {
         return (
             <div className="uk-card uk-card-body uk-card-default">
                 <div>
-                    <h3 className="uk-card-title uk-margin-remove" style={{color:store.logoColor}}>
-                        <b>{renderHTML(store.nickName)}</b>
+                    <h3 className="uk-card-title uk-margin-remove">
+                        <b>{renderHTML(store.name)}</b>
                     </h3>
-                    <p className="uk-margin-remove">
-                        <i>{renderHTML(store.slogan)}</i>
+                    <p className="uk-margin-remove uk-text-truncate">
+                        <i>{renderHTML(store.description)}</i>
                     </p>
                     <span className="uk-margin-small uk-text-small">
                         <Link to="/" className="uk-link uk-link-text">{store.notifications} Notificaions</Link>
                     </span>
                     <span> &middot; </span>
                     <span className="uk-margin-small uk-text-small">
-                        <a className="uk-link uk-link-text" herf={store.website} target="_blank">Visit Store</a>
+                        <Link to="/" className="uk-link uk-link-text">
+                            Visit Store
+                        </Link>
                     </span>
                 </div>
                 <div className="uk-margin uk-text-left">
                     <Link 
                         className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right"
-                        to={`/store/${store.token}`}>
+                        to={`/store/${store.slug}`}>
                         View Store
                     </Link>
                     <button className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right">
-                        Watch {renderHTML(store.nickName)}
+                        Watch {renderHTML(store.name)}
                     </button>
                 </div>
             </div>
@@ -199,7 +202,7 @@ class Stores extends React.Component {
                     ? 
                     <div className="uk-margin uk-text-center">
                         <Link
-                            to={`/explore/${this.tags.toLowerCase()}`}
+                            to={`/explore/tags/${this.tags.toLowerCase()}`}
                             className="uk-button uk-button-small uk-button-blue uk-text-capitalize uk-margin-small-right">
                             Explore {this.type}
                         </Link>

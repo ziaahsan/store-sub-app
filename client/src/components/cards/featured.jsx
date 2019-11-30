@@ -38,7 +38,6 @@ class Featured extends React.Component {
     // Fetch the stores from api databse
     async getStoresByTags() {
         const response = await StoreService.getStoresByTags(this.tags, this.page.number, this.page.orderby, this.page.limit);
-
         // Update the state
 		this.setState({
             isLoading: false,
@@ -77,33 +76,35 @@ class Featured extends React.Component {
                         Object.keys(stores).map((index, key) => {
                             let store = stores[key];
                             return (
-                                <div key={`${this.type}.${index}`} className="store-featured-card">
+                                <div key={index} className="store-featured-card">
                                     <div className="uk-card uk-card-default">
                                         <div className="uk-card-media-top">
                                             <img src={store.image} alt=""/>
                                         </div>
                                         <div className="uk-padding">
-                                            <h3 className="uk-card-title uk-margin-remove" style={{color:store.logoColor}}>
-                                                <b>{renderHTML(store.nickName)}</b>
+                                            <h3 className="uk-card-title uk-margin-remove">
+                                                <b>{renderHTML(store.name)}</b>
                                             </h3>
-                                            <p className="uk-margin-remove">
-                                                <i>{renderHTML(store.slogan)}</i>
+                                            <p className="uk-margin-remove uk-text-truncate">
+                                                <i>{renderHTML(store.description)}</i>
                                             </p>
                                             <span className="uk-margin-small uk-text-small">
                                                 <Link to="/" className="uk-link uk-link-text">{store.notifications} Notificaions</Link>
                                             </span>
                                             <span> &middot; </span>
                                             <span className="uk-margin-small uk-text-small">
-                                                <a className="uk-link uk-link-text" herf={store.website} target="_blank">Visit Store</a>
+                                                <Link to="/" className="uk-link uk-link-text">
+                                                    Visit StoreService
+                                                </Link>
                                             </span>
                                             <div className="uk-margin">
                                                 <Link 
                                                     className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right"
-                                                    to={`/store/${store.token}`}>
-                                                    View
+                                                    to={`/store/${store.slug}`}>
+                                                    View Store
                                                 </Link>
-                                                <button className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-margin-small-right">
-                                                    Watch {renderHTML(store.nickName)}
+                                                <button style={{maxWidth: '135px'}} className="uk-width-expand uk-width-small uk-button uk-button-small uk-button-orange uk-text-capitalize uk-margin-small-right uk-text-truncate">
+                                                    Watch {renderHTML(store.name)}
                                                 </button>
                                             </div>
                                         </div>

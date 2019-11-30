@@ -1,6 +1,7 @@
 "use strict";
 // Import model
 const StoreModel = require('../models/storeModel');
+const { check, validationResult } = require('express-validator');
 
 module.exports = (app) => {
     // Get :tag stores
@@ -48,22 +49,21 @@ module.exports = (app) => {
         }
     });
 
-    // Get :token store
-    app.get('/api/store/:token', async(req, res) => {
-        let {token} = req.params;
-        token = decodeURIComponent(String(token));
+    // Get :slug store
+    app.get('/api/store/:slug', async(req, res) => {
+        let {slug} = req.params;
+        slug = decodeURIComponent(String(slug));
 
-        if (!token || isNaN(token) 
-            || token.length != 16) {
+        if (!slug) {
             // Error, send message
             res.status(400).json(
                 {
                     error: true,
-                    message: 'You are required to provide token.'
+                    message: 'You are required to provide slug.'
                 }
             );
         } else {
-            StoreModel.getByToken(token, (error, store) => {
+            StoreModel.getBySlug(slug, (error, store) => {
                 store = JSON.parse(store);
 
                 if (error) res.status(400).send(error);
@@ -73,59 +73,107 @@ module.exports = (app) => {
     });
 
     // Create a store
-    // @todo: Sanitize, and checks
-    app.post('/api/store', async(req, res) => {
-        // Post request data
-        const {body} = req;
-        // Create a newStore instance
-        let newStore = new StoreModel(body);
-        // Handles null error 
-        if (!newStore.email || !newStore.name
-            || !newStore.nickName || !newStore.slogan || !newStore.logoColor
-            || !newStore.tags || !newStore.website) {
-                // Error, send message
-                res.status(400).json(
+    app.post('/api/store',
+        [
+            check('email').isEmail().normalizeEmail().stripLow(),
+            check('slug').isLength({ min: 2 }).trim().escape().stripLow(),
+            check('name').isLength({ min: 3 }).trim().escape().stripLow(),
+            check('description').isLength({ min: 3 }).trim().escape().stripLow(),
+            check('category').isLength({ min: 2 }).trim().escape().stripLow(),
+            check('tags').trim().escape().stripLow(),
+            check('website').trim().escape().stripLow(),
+            check('image').trim().escape().stripLow(),
+            check('countryCode').isLength({ min: 2 }).trim().escape().stripLow()
+        ],
+        async(req, res) => {
+            // Handle error of body params
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(422).json(
                     {
-                        error: true,
-                        message: 'You are required to provide all params.'
+                        errors: errors.array()
                     }
                 );
-        } else {
-            // No errors, create the store by @StoreMode.create
-            StoreModel.create(newStore, (error, result) => {
-                result = JSON.parse(result);
+            }
 
-                if (error) res.status(400).send(error);
-                res.status(201).json(result);
-            });
+            // Post request data
+            const {body} = req;
+
+            // Create a newStore instance
+            let newStore = new StoreModel(body);
+
+            // Handles null error 
+            if (!newStore.token || !newStore.name 
+                || !newStore.slug || !newStore.name || !newStore.description || !newStore.category
+                || !newStore.tags || !newStore.website || !newStore.image || !newStore.countryCode) {
+                    // Error, send message
+                    return res.status(400).json(
+                        {
+                            error: true,
+                            message: 'You are required to provide all params.'
+                        }
+                    );
+            } else {
+                // No errors, create the store by @StoreMode.create
+                StoreModel.create(newStore, (error, result) => {
+                    result = JSON.parse(result);
+
+                    if (error) res.status(400).send(error);
+                    res.status(201).json(result);
+                });
+            }
         }
-    });
+    );
 
     // Update store
-    // @todo: Sanitize, and checks
-    app.put('/api/store', async (req, res) => {
-        // Post request data
-        const {body} = req;
-        // Update instance
-        let updateStore = new StoreModel(body);
-        // Handles null error 
-        if (!updateStore.token || !updateStore.name 
-            || !updateStore.nickName || !updateStore.slogan || !updateStore.logoColor
-            || !updateStore.tags || !updateStore.website) {
-                // Error, send message
-                res.status(400).json(
+    app.put('/api/store',
+        [
+            check('email').isEmail().normalizeEmail().stripLow(),
+            check('slug').isLength({ min: 2 }).trim().escape().stripLow(),
+            check('name').isLength({ min: 3 }).trim().escape().stripLow(),
+            check('description').isLength({ min: 3 }).trim().escape().stripLow(),
+            check('category').isLength({ min: 2 }).trim().escape().stripLow(),
+            check('tags').trim().escape().stripLow(),
+            check('website').trim().escape().stripLow(),
+            check('image').trim().escape().stripLow(),
+            check('countryCode').isLength({ min: 2 }).trim().escape().stripLow()
+        ],
+        async (req, res) => {
+            // Handle error of body params
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(422).json(
                     {
-                        error: true,
-                        message: 'You are required to provide all params.'
+                        errors: errors.array()
                     }
                 );
-        } else {
-            StoreModel.update(body, (error, result) => {
-                result = JSON.parse(result);
-                
-                if (error) res.status(400).send(error);
-                res.status(202).json(result);
-            });
+            }
+
+            // Post request data
+            const {body} = req;
+
+            // Update instance
+            let updateStore = new StoreModel(body);
+
+            // Handles null error 
+            if (!updateStore.token || !updateStore.name 
+                || !updateStore.slug || !updateStore.name || !updateStore.description || !updateStore.category
+                || !updateStore.tags || !updateStore.website || !updateStore.image || !updateStore.countryCode) {
+                    // Error, send message
+                    res.status(400).json(
+                        {
+                            error: true,
+                            message: 'You are required to provide all params.'
+                        }
+                    );
+            } else {
+                StoreModel.update(body, (error, result) => {
+                    result = JSON.parse(result);
+                    
+                    if (error) res.status(400).send(error);
+                    res.status(202).json(result);
+                });
+            }
         }
-    });
+    );
 }

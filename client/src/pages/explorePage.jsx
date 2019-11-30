@@ -2,7 +2,7 @@ import React from 'react';
 import 'uikit';
 
 // Stores component
-import Stores from '../components/stores/stores';
+import Stores from '../components/cards/stores';
 
 // Error component
 import NoStoreFound from '../components/error/noStoreFound';

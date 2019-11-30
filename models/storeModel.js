@@ -9,19 +9,35 @@ const EventModel = require('./eventModel');
 class StoreModel {
     // StoreModel contructor
     constructor(store) {
+        // This object
         this.token = crypto({length: 16, type: 'url-safe'});
         this.email = store.email;
+        this.slug = store.slug;
         this.name = store.name;
-        this.nickName = store.nickName;
-        this.slogan = store.slogan;
-        this.logoColor = store.logoColor;
+        this.description = store.description;
+        this.category = store.category;
         this.tags = store.tags;
         this.website = store.website;
+        this.image = store.image;
+        this.countryCode = store.countryCode;
     }
   
     // Get a store by token
     static getByToken(token, result) {
-        database.query("SELECT * FROM `ma_stores` WHERE token = ?", token, (error, res) => {
+        database.query("SELECT * FROM `ma_stores` WHERE `token` = ?", token, (error, res) => {
+            if (error) {
+                console.log(error);
+                result(error, null);
+            } else {
+                let queryResult = JSON.stringify(res);
+                result(null, queryResult);
+            }
+        });
+    }
+
+    // Get a store by token
+    static getBySlug(slug, result) {
+        database.query("SELECT * FROM `ma_stores` WHERE `slug` = ?", slug, (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);
@@ -34,7 +50,7 @@ class StoreModel {
 
     // Get a store by email
     static getByEmail(email, result) {
-        database.query("SELECT * FROM `ma_stores` WHERE email = ?", email, (error, res) => {
+        database.query("SELECT * FROM `ma_stores` WHERE `email` = ?", email, (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);
@@ -54,7 +70,7 @@ class StoreModel {
             case 'recentUpdates':
                 strQuery =
                 `
-                    SELECT mas.token, mas.nickName, mas.slogan, mas.logoColor, mas.website, mas.image, COUNT(lusn.storeToken) as notifications FROM ma_stores mas
+                    SELECT mas.token, mas.slug, mas.name, mas.description, mas.category, mas.website, mas.image, COUNT(lusn.storeToken) as notifications FROM ma_stores mas
                     LEFT JOIN lu_stores_notifications as lusn ON mas.token = lusn.storeToken
                     WHERE tags LIKE ? AND lusn.createdAt >= (CURDATE() + INTERVAL -7 DAY) GROUP BY mas.token ORDER BY lusn.createdAt DESC LIMIT ?, ?
                 `;
@@ -62,7 +78,7 @@ class StoreModel {
             case 'popular':
                 strQuery =
                 `
-                    SELECT mas.token, mas.nickName, mas.slogan, mas.logoColor, mas.website, mas.image, COUNT(lusn.storeToken) as notifications FROM ma_stores mas
+                    SELECT mas.token, mas.slug, mas.name, mas.description, mas.category, mas.website, mas.image, COUNT(lusn.storeToken) as notifications FROM ma_stores mas
                     LEFT JOIN lu_stores_notifications as lusn ON mas.token = lusn.storeToken
                     WHERE tags LIKE ? GROUP BY mas.token ORDER BY notifications DESC LIMIT ?, ?
                 `;
@@ -70,9 +86,9 @@ class StoreModel {
             case 'alphabetically':
                 strQuery =
                 `
-                    SELECT mas.token, mas.nickName, mas.slogan, mas.logoColor, mas.website, mas.image, COUNT(lusn.storeToken) as notifications FROM ma_stores mas
+                    SELECT mas.token, mas.slug, mas.name, mas.description, mas.category, mas.website, mas.image, COUNT(lusn.storeToken) as notifications FROM ma_stores mas
                     LEFT JOIN lu_stores_notifications as lusn ON mas.token = lusn.storeToken
-                    WHERE tags LIKE ? GROUP BY mas.token ORDER BY nickName ASC LIMIT ?, ?
+                    WHERE tags LIKE ? GROUP BY mas.token ORDER BY name ASC LIMIT ?, ?
                 `;
                 break;
         }

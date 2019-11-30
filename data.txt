@@ -1,0 +1,95 @@
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "hm-ca",
+	"name": "H&M",
+	"description": "Welcome to H&M online. Find fashionable clothing for men, women and kids at affordable prices, plus stylish home décor. Shop online today.",
+	"category": "store",
+	"tags": "store,clothing,men,women,kids,affordable,stylish,home,décor",
+	"website": "https://www2.hm.com/en_ca/index.html",
+	"image": "---",
+    "countryCode": "ca"
+}
+
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "zara-ca",
+	"name": "ZARA",
+	"description": "Discover the new ZARA collection online. The latest trends for Woman, Man, Kids and next season’s ad campaigns.",
+	"category": "store",
+	"tags": "store,clothing,men,women,kids",
+	"website": "https://www.zara.com/ca/",
+	"image": "---",
+    "countryCode": "ca"
+}
+
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "asos-ca",
+	"name": "ASOS",
+	"description": "Check out our amazing deals across clothing, shoes & accessories. Shop now at ASOS.",
+	"category": "store",
+	"tags": "store,online,clothing,men,women,kids",
+	"website": "https://www.asos.com/",
+	"image": "---",
+    "countryCode": "ca"
+}
+
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "urban-planet-ca",
+	"name": "Urban Planet",
+	"description": "Shop Urban Planet for the latest in womens, mens, girls and boys fashions at affordable prices!",
+	"category": "store",
+	"tags": "store,online,clothing,men,women,kids,affordable",
+	"website": "https://urban-planet.com/",
+	"image": "---",
+    "countryCode": "ca"
+}
+
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "urban-planet-stitches-ca",
+	"name": "Stitches",
+	"description": "Shop Urban Planet for the latest in womens, mens, girls and boys fashions at affordable prices!",
+	"category": "store",
+	"tags": "store,online,clothing,kids,affordable",
+	"website": "https://urban-planet.com/pages/stitches/",
+	"image": "---",
+    "countryCode": "ca"
+}
+
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "urban-planet-sirens-ca",
+	"name": "Sirens",
+	"description": "Shop Urban Planet for the latest in womens, mens, girls and boys fashions at affordable prices!",
+	"category": "store",
+	"tags": "store,online,clothing,women,affordable",
+	"website": "https://urban-planet.com/pages/sirens/",
+	"image": "---",
+    "countryCode": "ca"
+}
+
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "urban-planet-kids-ca",
+	"name": "Urban Kids",
+	"description": "Shop Urban Planet for the latest in womens, mens, girls and boys fashions at affordable prices!",
+	"category": "store",
+	"tags": "store,online,clothing,kids,affordable",
+	"website": "https://urban-planet.com/pages/urban-kids/",
+	"image": "---",
+    "countryCode": "ca"
+}
+
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "techcrunch",
+	"name": "TechCrunch",
+	"description": "TechCrunch - Reporting on the business of technology, startups, venture capital funding, and Silicon Valley.",
+	"category": "website",
+	"tags": "website,online,business of technology,startups,venture capital funding,silicon valley",
+	"website": "https://techcrunch.com/",
+	"image": "---",
+    "countryCode": "---"
+}

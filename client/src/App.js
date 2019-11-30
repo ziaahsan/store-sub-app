@@ -18,10 +18,10 @@ class App extends React.Component {
 				<TopNavBar />
 				<Switch>
 					<Route exact path="/"component={StoresPage} />
+					<Route exact path="/explore/tags/:tags"component={ExplorePage} />
 					<Route exact path="/login"component={LoginPage} />
-					<Route exact path="/explore/:tags"component={ExplorePage} />
 					<Route exact path="/stores"component={StoresPage} />
-					<Route exact path="/store/:storeToken" component={StorePage} />
+					<Route exact path="/store/:slug" component={StorePage} />
 					<Route exact path="/notification/:notificationToken" component={NotificationPage} />
 				</Switch>
 			</Router>

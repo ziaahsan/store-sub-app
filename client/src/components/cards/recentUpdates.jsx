@@ -19,9 +19,8 @@ class RecentUpdatesLoader extends React.Component {
         for (let i = 0; i < 6; i++) {
             let data = {
                 notifications: 0,
-                logoColor: '#000000',
-                nickName: 'Store',
-                slogan: 'No description provided.'
+                name: 'Store',
+                description: 'No description provided.'
             }
             this.holder.push(data);
         }
@@ -53,8 +52,8 @@ class RecentUpdatesLoader extends React.Component {
                                             <div className="uk-float-right uk-position-absolute" style={{top: "-10px", right: "-4px"}}>
                                                 <span className="blokk-font uk-badge uk-box-shadow-medium">{store.notifications}</span>
                                             </div>
-                                            <h5 className="blokk-font uk-margin-remove uk-text-truncate" style={{color:store.logoColor}}>
-                                                <b>{renderHTML(store.nickName)}</b> - {renderHTML(store.slogan)}
+                                            <h5 className="blokk-font uk-margin-remove uk-text-truncate">
+                                                <b>{renderHTML(store.name)}</b> - {renderHTML(store.description)}
                                             </h5>
                                         </div>
                                     </div>
@@ -136,14 +135,14 @@ class RecentUpdates extends React.Component {
                         Object.keys(stores).map((index, key) => {
                             let store = stores[key];
                             return (
-                                <span key={`${this.type}.${index}`} className="store-recent-card">
+                                <span key={index} className="store-recent-card">
                                     <div className="uk-card uk-card-default">
                                         <div className="uk-padding-small">
                                             <div className="uk-float-right uk-position-absolute" style={{top: "-10px", right: "-4px"}}>
                                                 <span className="uk-badge uk-box-shadow-medium">{store.notifications}</span>
                                             </div>
-                                            <h5 className="uk-margin-remove uk-text-truncate" style={{color:store.logoColor}}>
-                                                <b>{renderHTML(store.nickName)}</b> - {renderHTML(store.slogan)}
+                                            <h5 className="uk-margin-remove uk-text-truncate">
+                                                <b>{renderHTML(store.name)}</b> - {renderHTML(store.description)}
                                             </h5>
                                         </div>
                                     </div>

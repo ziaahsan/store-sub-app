@@ -11,9 +11,11 @@ export default {
         return stores || [];
     },
     
-    // Get :token store
-    getStore: async (token) => {
-        let store = await axios.get('/api/store/' + token);
+    // Get :slug store
+    getStoreBySlug: async (slug) => {
+        slug = encodeURIComponent(slug);
+        
+        let store = await axios.get(`/api/store/${slug}`);
         return store || [];
     },
 
