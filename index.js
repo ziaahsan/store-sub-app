@@ -10,6 +10,7 @@
 "use strict";
 // Package import
 const express = require('express');
+const compression = require('compression');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('config');
@@ -19,6 +20,7 @@ const MailNotifierModel = require('./models/mailNotifierModel');
 
 // Express app
 const app = express();
+app.use(compression());
 app.use(cors());
 app.use(bodyParser.json());
 

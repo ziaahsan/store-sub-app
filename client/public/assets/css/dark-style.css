@@ -5,9 +5,13 @@ html {
 }
 
 body {
-	background-color: #f8f9fb;
+	background-color: #141D26;
 	min-height: 100%;
 	-webkit-font-smoothing: antialiased;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
 }
 
 b {
@@ -24,39 +28,70 @@ code {
 	/*Container*/
 		.uk-container-large {
 			max-width: 1400px;
-		}
-	/*Notifications*/
+        }
+    /*Navbar*/
+        .uk-navbar-container:not(.uk-navbar-transparent) {
+            background-color: transparent;
+        }
+    /*Notifications*/
 		.uk-notification-message-primary {
 			color: #222222;
 		}
 		.uk-notification-message {
-			background: #ffffff;
-			border: 1px solid #eaeaea;
+			background: #C51F5D;
+			border: 1px solid #141D26;
 			border-radius: 4px;
-			box-shadow: 0 1px 14px #eeeeee;
+            box-shadow: 0 5px 30px rgba(0,0,0,.3);
+        }
+    /*Hr*/
+        .uk-hr, hr {
+            border-top-color: #1a2531;
+        }
+    /*anchor*/
+        .uk-link-text a, a.uk-link-text {
+            color: #7394b5;
+        }
+    /*icon*/
+        .uk-icon {
+            color: #375069;
+		}
+	/*labe*/
+		.uk-label {
+			background: #bc0053;
+			color: #ffeff6;
 		}
 	/*Button*/
-		.uk-button-default {
+        .uk-button-default,
+        .uk-button-default:hover {
 			box-shadow: 0 1px 1px 0 rgba(60, 66, 87, .12), 0 1px 0px 0 rgba(0, 0, 0, .12);
-			background: #ffffff;
+			background: #243447;
 			border-radius: 4px;
-			color: #4b5260;
+			color: #aabed2;
 			font-weight: 500;
-			border-color: #b2b2b2;
-		}
+			border-color: #1a2531;
+        }
+        .uk-button-default:hover {
+            background: #2f455e;
+            border-color: #2f455e;
+        }
 		.uk-button-primary,
 		.uk-button-primary:hover {
 			box-shadow: 0 1px 1px 0 rgba(60, 66, 87, .12), 0 1px 0px 0 rgba(0, 0, 0, .12);
-			background: #f7fafc;
+			background: #3b69cd;
 			border-radius: 4px;
-			color: #697386;
+			color: #ebf0fa;
 			font-weight: 500;
-			border-color: #b2b2b2;
+			border-color: #3b69cd;
 		}
-		.uk-button-primary:hover{
-			background: #ffffff;
-			border-color: #999;
-			color: #4b5260;
+		.uk-button-secondary,
+		.uk-button-secondary:hover {
+			box-shadow: 0 1px 1px 0 rgba(60, 66, 87, .12), 0 1px 0px 0 rgba(0, 0, 0, .12);
+			background: #357cff;
+			border-radius: 4px;
+			color: #e0e7f4;
+			font-weight: 500;
+			text-transform: none;
+			border: 1px solid #357cff;
 		}
 		.uk-button-orange {
 			box-shadow: 0 5px 30px rgba(0,0,0,.3);
@@ -83,33 +118,30 @@ code {
 			text-transform: none;
 			border: 1px solid #4642c5;
 		}
-		.uk-button-secondary {
-			box-shadow: 0 1px 2px 0 #0d65bd;
-			background: #1e87f0;
-			border-radius: 4px;
-			color: #ffffff;
-			font-weight: 500;
-			text-transform: none;
-			border: 1px solid #0d65bd;
-		}
-		.uk-button-secondary:hover {
-			background: #107fed;
-		}
 		.uk-tooltip {
 			background-color: #000000;
 		}
 	/*Card*/
 		.uk-card {
-			border-radius: 8px;
+            border-radius: 8px;
 		}
 		.uk-card-default {
-			background: rgba(255,255,255,0.9);
-		}
+			background: rgba(26, 37, 49, 0.9);
+        }
+        .uk-card-default .uk-card-title {
+            color: #ffffff;
+        }
 		.uk-card-body {
 			backdrop-filter: blur(8px);
     		-webkit-backdrop-filter: blur(8px);
 		}
-/*Style*/
+	/*Style*/
+	.primary-text-color {
+		color: #9fb6cd;
+	}
+	.secondary-text-color {
+		color: #7e9cbb;
+	}
 	.store-notifications:before {
 		content: ' ';
 		height: 0;
@@ -117,15 +149,15 @@ code {
 		width: 0;
 		top: -12px;
 		border: 6px solid transparent;
-		border-bottom-color: #ffffff;
+		border-bottom-color: rgba(26, 37, 49, 0.9);;
 		left: 2%;
 		right: 0;
 	}
 	.store-notification:first-child {
-		border-top: 1px solid #f8f8f8;
+		border-top: 1px solid #141d26;
 	}
 	.store-notification {
-		border-bottom: 1px solid #f8f8f8;
+		border-bottom: 1px solid #141d26;
 		margin: 0!important;
 		padding: 12px 0px;
 	}

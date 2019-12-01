@@ -48,7 +48,35 @@ class RecentUpdates extends React.Component {
         this.getStoresByTags();
     }
 
+    // Check before updating component
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.isLoading !== nextState.isLoading)
+            return true;
+        return false;
+    }
     
+    // Renders all the updates
+    renderRecentUpdates(stores) {
+        return(
+            Object.keys(stores).map((index, key) => {
+                let store = stores[key];
+                return (
+                    <span key={`${this.type}.${index}`} className="store-recent-card">
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-padding-small">
+                                <div className="uk-float-right uk-position-absolute" style={{top: "-10px", right: "-4px"}}>
+                                    <span className="uk-badge uk-box-shadow-medium">{store.notifications}</span>
+                                </div>
+                                <h5 className="uk-margin-remove uk-text-truncate">
+                                    <b>{renderHTML(store.name)}</b> - {renderHTML(store.description)}
+                                </h5>
+                            </div>
+                        </div>
+                    </span>
+                );
+            })
+        )
+    }
     // Render component
     render() {
         // Get state Vars
@@ -70,25 +98,7 @@ class RecentUpdates extends React.Component {
         return(
             <div className="uk-margin">
                 <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-6@m" uk-grid="true">
-                    {
-                        Object.keys(stores).map((index, key) => {
-                            let store = stores[key];
-                            return (
-                                <span key={index} className="store-recent-card">
-                                    <div className="uk-card uk-card-default">
-                                        <div className="uk-padding-small">
-                                            <div className="uk-float-right uk-position-absolute" style={{top: "-10px", right: "-4px"}}>
-                                                <span className="uk-badge uk-box-shadow-medium">{store.notifications}</span>
-                                            </div>
-                                            <h5 className="uk-margin-remove uk-text-truncate">
-                                                <b>{renderHTML(store.name)}</b> - {renderHTML(store.description)}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </span>
-                            )
-                        })
-                    }
+                    {this.renderRecentUpdates(stores)}
                 </div>
             </div>
         );

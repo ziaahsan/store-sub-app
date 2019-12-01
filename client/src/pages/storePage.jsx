@@ -1,4 +1,7 @@
 import React from 'react';
+import 'uikit';
+
+// 
 import { Link } from 'react-router-dom';
 import { format } from 'timeago.js';
 
@@ -8,7 +11,7 @@ import RecentUpdates from '../components/cards/recentUpdates';
 // Loaders Component
 import LoadingPage from '../components/loaders/loadingPage';
 import LoadingSpinner from '../components/loaders/loadingSpinner';
-import LoadingRecentUpdatesCard from '../components/loaders/loadingRecentUpdatesCard';
+import LoadingCardRecentUpdates from '../components/loaders/loadingCardRecentUpdates';
 
 // Error component
 import NoStoreFound from '../components/error/noStoreFound';
@@ -51,6 +54,37 @@ class StoreNotifications extends React.Component {
 		this.getNotifications();
 	}
 
+	// Render's notification
+	renderNotification(notifications) {
+		return(
+			Object.keys(notifications).map((index, key) => {
+				let notification = notifications[key];
+				let posted = format(new Date(notification.deliveredDate).toLocaleString());
+				return (
+					<div className="store-notification uk-margin" key={`${this.type}.${index}`}>
+						<div className="uk-flex uk-flex-middle uk-grid-small" uk-grid="true">
+							<div className="uk-width-expand">
+								<h4 className="uk-margin-remove">
+									{renderHTML(notification.subject)}
+								</h4>
+								<p className="uk-width-1-2 uk-margin-remove uk-text-truncate secondary-text-color">{renderHTML(notification.message)}</p>
+								<p className="uk-margin-remove uk-text-small">{posted}</p>
+							</div>
+							<div className="uk-width-small uk-text-right">
+								<Link
+									to={`/notification/${notification.token}`}
+									className="uk-button uk-button-small uk-button-default uk-text-capitalize"
+								>
+									View Update
+								</Link>
+							</div>
+						</div>
+					</div>
+				);
+			})
+		);
+	}
+
 	// Draw component on screen
 	render() {
 		// Get state Vars
@@ -73,31 +107,7 @@ class StoreNotifications extends React.Component {
 
 		// Showing notifications
 		return (
-			Object.keys(notifications).map((index, key) => {
-				let notification = notifications[key];
-				let posted = format(new Date(notification.deliveredDate).toLocaleString());
-				return (
-					<div className="store-notification uk-margin" key={index}>
-						<div className="uk-flex uk-flex-middle uk-grid-small" uk-grid="true">
-							<div className="uk-width-expand">
-								<h4 className="uk-margin-remove">
-									{renderHTML(notification.subject)}
-								</h4>
-								<p className="uk-margin-remove uk-text-truncate">{renderHTML(notification.message)}</p>
-								<p className="uk-margin-remove uk-text-small">{posted}</p>
-							</div>
-							<div className="uk-width-small uk-text-right">
-								<Link
-									to={`/notification/${notification.token}`}
-									className="uk-button uk-button-small uk-button-default uk-text-capitalize"
-								>
-									View Update
-								</Link>
-							</div>
-						</div>
-					</div>
-				);
-			})
+			this.renderNotification(notifications)
 		);
 	}
 }
@@ -152,9 +162,9 @@ class StorePage extends React.Component {
 		return (
 			<div className="uk-container uk-container-large">
 				<div className="uk-position-top-center uk-box-shadow-small" style={{top: '22px'}}>
-					<div class="uk-text-left uk-notification-message" style={{padding: '8px'}}>
-						<p class="uk-margin-remove uk-text-small">
-							Stop Viewing <span className="uk-text-capitalize">{renderHTML(store.name)}</span>
+					<div className="uk-text-left uk-notification-message" style={{padding: '8px'}}>
+						<p className="uk-margin-remove uk-width-small uk-text-small uk-text-center uk-text-truncate">
+							<b style={{fontWeight: '500'}}>Close <span className="uk-text-capitalize">{renderHTML(store.name)}</span></b>
 						</p>
 					</div>
 				</div>
@@ -164,7 +174,7 @@ class StorePage extends React.Component {
 							<b>Viewing <span className="uk-text-capitalize">{store.category}</span></b>
 						</h1>
 						<p className="uk-margin-remove-top">Recieve <span style={{color: "#f3003f"}}>real-time</span> notifications
-							from this store when you subscribe.</p>
+							from this store when you watch.</p>
 					</div>
 					<hr/>
 					<div>
@@ -187,15 +197,14 @@ class StorePage extends React.Component {
 										Watch {renderHTML(store.name)}
 									</button>
 									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize">
-										More
+										More Options
 									</button>
 								</div>
 								<h5 className="uk-margin-remove">
 									<b>Updates</b>
 								</h5>
-								<p className="uk-margin-remove">Live updates from store.</p>
+								<p className="uk-margin-remove">Watch and recieve live updates from this {store.category}.</p>
 							</div>
-							<hr/>
 							<div className="uk-margin">
 								<StoreNotifications storeToken={`${store.token}`} />
 							</div>
@@ -211,7 +220,7 @@ class StorePage extends React.Component {
 						</h2>
 					</div>
 					<RecentUpdates type='Stores' tags="store">
-						<LoadingRecentUpdatesCard />
+						<LoadingCardRecentUpdates />
 					</RecentUpdates>
 				</div>
 			</div>

@@ -2,9 +2,9 @@ import React from 'react';
 import 'uikit';
 
 // Loaders component
-import LoadingStoreCard from '../components/loaders/loadingStoreCard';
-import LoadingFeaturedCard from '../components/loaders/loadingFeaturedCard';
-import LoadingRecentUpdatesCard from '../components/loaders/loadingRecentUpdatesCard';
+import LoadingCardStore from '../components/loaders/loadingCardStore';
+import LoadingCardFeatured from '../components/loaders/loadingCardFeatured';
+import LoadingCardRecentUpdates from '../components/loaders/loadingCardRecentUpdates';
 
 // Stores component
 import RecentUpdates from '../components/cards/recentUpdates';
@@ -19,11 +19,16 @@ class StoresPage extends React.Component {
             <div className="uk-container uk-container-large">
                 <div className="uk-width-1-1">
                     <div>
-                        <h1 className="uk-margin-remove">
-                            <b>Watch for Updates</b>
-                        </h1>
-                        <p className="uk-margin-remove-top">Look for a product and get live updates wherever you are.</p>
+                        <div className="uk-height-large uk-flex uk-flex-middle">
+                            <div>
+                                <h1 className="uk-margin-remove">
+                                    <b>Watch for Updates</b>
+                                </h1>
+                                <p className="uk-margin-remove-top">Look for a product and get live updates wherever you are.</p>
+                            </div>
+                        </div>
                     </div>
+
                     <hr/>
 
                     {/* Recent Updates Component */}
@@ -37,7 +42,7 @@ class StoresPage extends React.Component {
                             </p>
                         </div>
                         <RecentUpdates type='Stores' tags="store">
-                            <LoadingRecentUpdatesCard />
+                            <LoadingCardRecentUpdates />
                         </RecentUpdates>
                     </div>
 
@@ -49,7 +54,7 @@ class StoresPage extends React.Component {
                             </h2>
                         </div>
                         <Stores type='Stores' tags="store">
-                            <LoadingStoreCard />
+                            <LoadingCardStore />
                         </Stores>
                     </div>
 
@@ -61,11 +66,11 @@ class StoresPage extends React.Component {
                             </h2>
                         </div>
                         <Featured type='Featured' tags="featured">
-                            <LoadingFeaturedCard />
+                            <LoadingCardFeatured />
                         </Featured>
                     </div>
 
-                     {/* Techy Component */}
+                    {/* Techy Component */}
                     <div>
                         <div>
                             <h2 className="uk-margin-remove">
@@ -73,7 +78,7 @@ class StoresPage extends React.Component {
                             </h2>
                         </div>
                         <Stores type='Website' tags="website">
-                            <LoadingStoreCard />
+                            <LoadingCardStore />
                         </Stores>
                     </div>
                 </div>

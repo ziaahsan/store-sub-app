@@ -33,7 +33,7 @@ class StoreNotificationModel {
 
     // Get all notifications of a given :storeToken
     static getByStoreToken(storeToken, result) {
-        database.query("SELECT * FROM `lu_stores_notifications` WHERE storeToken = ? ORDER BY `createdAt` DESC LIMIT 50", storeToken, (error, res) => {
+        database.query("SELECT * FROM `lu_stores_notifications` WHERE storeToken = ? ORDER BY `createdAt` DESC LIMIT 6", storeToken, (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);

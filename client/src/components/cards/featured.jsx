@@ -49,6 +49,58 @@ class Featured extends React.Component {
         this.getStoresByTags();
     }
 
+    // Check before updating component
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.isLoading !== nextState.isLoading)
+            return true;
+        return false;
+    }
+
+    // Renders all the featured
+    renderFeatured(stores) {
+        return(
+            Object.keys(stores).map((index, key) => {
+                let store = stores[key];
+                return (
+                    <div key={`${this.type}.${index}`} className="store-featured-card">
+                        <div className="uk-card uk-card-default">
+                            <div className="uk-card-media-top">
+                                <img src={store.image} alt=""/>
+                            </div>
+                            <div className="uk-padding">
+                                <h3 className="uk-card-title uk-margin-remove">
+                                    <b>{renderHTML(store.name)}</b>
+                                </h3>
+                                <p className="uk-margin-remove uk-text-truncate">
+                                    <i>{renderHTML(store.description)}</i>
+                                </p>
+                                <span className="uk-margin-small uk-text-small">
+                                    <Link to="/" className="uk-link uk-link-text">{store.notifications} Notificaions</Link>
+                                </span>
+                                <span> &middot; </span>
+                                <span className="uk-margin-small uk-text-small">
+                                    <Link to="/" className="uk-link uk-link-text">
+                                        Visit Store
+                                    </Link>
+                                </span>
+                                <div className="uk-margin">
+                                    <Link 
+                                        className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right"
+                                        to={`/store/${store.slug}`}>
+                                        View Store
+                                    </Link>
+                                    <button style={{maxWidth: '135px'}} className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-text-truncate">
+                                        Watch {renderHTML(store.name)}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })
+        );
+    }
+
     // Render component
     render() {
         // Get state Vars
@@ -70,47 +122,7 @@ class Featured extends React.Component {
         return(
             <div className="uk-margin">
                 <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid="true">
-                    {
-                        Object.keys(stores).map((index, key) => {
-                            let store = stores[key];
-                            return (
-                                <div key={index} className="store-featured-card">
-                                    <div className="uk-card uk-card-default">
-                                        <div className="uk-card-media-top">
-                                            <img src={store.image} alt=""/>
-                                        </div>
-                                        <div className="uk-padding">
-                                            <h3 className="uk-card-title uk-margin-remove">
-                                                <b>{renderHTML(store.name)}</b>
-                                            </h3>
-                                            <p className="uk-margin-remove uk-text-truncate">
-                                                <i>{renderHTML(store.description)}</i>
-                                            </p>
-                                            <span className="uk-margin-small uk-text-small">
-                                                <Link to="/" className="uk-link uk-link-text">{store.notifications} Notificaions</Link>
-                                            </span>
-                                            <span> &middot; </span>
-                                            <span className="uk-margin-small uk-text-small">
-                                                <Link to="/" className="uk-link uk-link-text">
-                                                    Visit Store
-                                                </Link>
-                                            </span>
-                                            <div className="uk-margin">
-                                                <Link 
-                                                    className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right"
-                                                    to={`/store/${store.slug}`}>
-                                                    View Store
-                                                </Link>
-                                                <button style={{maxWidth: '135px'}} className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-text-truncate">
-                                                    Watch {renderHTML(store.name)}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })
-                    }
+                   {this.renderFeatured(stores)}
                 </div>
             </div>
         );

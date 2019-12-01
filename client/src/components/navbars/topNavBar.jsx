@@ -12,7 +12,7 @@ export default class TopNavBar extends React.Component {
                             <div className="nav-overlay uk-navbar-left uk-width-expand">
                                 <ul className="uk-navbar-nav">
                                     <li>
-                                        <Link to="/">
+                                        <Link to="/" className="uk-padding-remove">
                                             <span className="uk-text-capitalize">
                                                 Subto.Store
                                             </span>

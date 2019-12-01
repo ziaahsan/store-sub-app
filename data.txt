@@ -93,3 +93,15 @@
 	"image": "---",
     "countryCode": "---"
 }
+
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "mcdonald-ca",
+	"name": "TechCrunch",
+	"description": "McDonalds.com is your hub for everything McDonalds. Find out more about our menu items and promotions today!",
+	"category": "store",
+	"tags": "store,fast food",
+	"website": "https://www.mcdonalds.com/ca/en-ca.html",
+	"image": "---",
+    "countryCode": "ca"
+}

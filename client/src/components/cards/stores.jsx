@@ -49,39 +49,54 @@ class Stores extends React.Component {
         // Fetch the all stores
         this.getStoresByTags();
     }
+
+    // Check before updating component
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.isLoading !== nextState.isLoading)
+            return true;
+        return false;
+    }
     
     // Renders all the stores
-    renderStore(store) {
+    renderStore(stores) {
         return (
-            <div className="uk-card uk-card-body uk-card-default">
-                <div>
-                    <h3 className="uk-card-title uk-margin-remove">
-                        <b>{renderHTML(store.name)}</b>
-                    </h3>
-                    <p className="uk-margin-remove uk-text-truncate">
-                        <i>{renderHTML(store.description)}</i>
-                    </p>
-                    <span className="uk-margin-small uk-text-small">
-                        <Link to="/" className="uk-link uk-link-text">{store.notifications} Notificaions</Link>
-                    </span>
-                    <span> &middot; </span>
-                    <span className="uk-margin-small uk-text-small">
-                        <Link to="/" className="uk-link uk-link-text">
-                            Visit Store
-                        </Link>
-                    </span>
-                </div>
-                <div className="uk-margin uk-text-left">
-                    <Link 
-                        className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right"
-                        to={`/store/${store.slug}`}>
-                        View Store
-                    </Link>
-                    <button className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right">
-                        Watch {renderHTML(store.name)}
-                    </button>
-                </div>
-            </div>
+            Object.keys(stores).map((index, key) => {
+                let store = stores[key];
+                return (
+                    <div key={`${this.type}.${index}`} className="store-card">
+                        <div className="uk-card uk-card-body uk-card-default">
+                            <div>
+                                {/* <div class="uk-card-badge uk-label uk-text-capitalize">{store.category}</div> */}
+                                <h3 className="uk-card-title uk-margin-remove">
+                                    <b>{renderHTML(store.name)}</b>
+                                </h3>
+                                <p className="uk-margin-remove uk-text-truncate">
+                                    <i>{renderHTML(store.description)}</i>
+                                </p>
+                                <span className="uk-margin-small uk-text-small">
+                                    <Link to="/" className="uk-link uk-link-text">{store.notifications} Notificaions</Link>
+                                </span>
+                                <span> &middot; </span>
+                                <span className="uk-margin-small uk-text-small">
+                                    <Link to="/" className="uk-link uk-link-text">
+                                        Visit Store
+                                    </Link>
+                                </span>
+                            </div>
+                            <div className="uk-margin uk-text-left">
+                                <Link 
+                                    className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right"
+                                    to={`/store/${store.slug}`}>
+                                    View Store
+                                </Link>
+                                <button style={{maxWidth: '215px'}} className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-text-truncate">
+                                    Watch {renderHTML(store.name)}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })
         );
     }
 
@@ -107,16 +122,7 @@ class Stores extends React.Component {
             <div className="uk-margin">
                 {/* Stores */}
                 <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="true">
-                    {
-                        Object.keys(stores).map((index, key) => {
-                            let store = stores[key];
-                            return (
-                                <div key={`${this.type}.${index}`} className="store-card">
-                                    {this.renderStore(store)}
-                                </div>
-                            );
-                        })
-                    }
+                    {this.renderStore(stores)}
                 </div>
                 
                 {/* Button */}

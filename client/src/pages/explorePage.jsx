@@ -2,7 +2,7 @@ import React from 'react';
 import 'uikit';
 
 // Loaders component
-import LoadingStoreCard from '../components/loaders/loadingStoreCard';
+import LoadingCardStore from '../components/loaders/loadingCardStore';
 
 // Stores component
 import Stores from '../components/cards/stores';
@@ -24,7 +24,7 @@ class ExplorePage extends React.Component {
 		// Check loading, or null store
 		if (!this.tags) {
 			return (
-				<NoStoreFound />
+                <NoStoreFound />
 			);
 		}
 
@@ -45,11 +45,11 @@ class ExplorePage extends React.Component {
                             <span className="uk-text-small uk-text-capitalize">{this.tags}</span>
                         </h2>
                         <p className="uk-margin-remove">
-                            Viewing all the stores for category.
+                            Viewing all the products for provided tags.
                         </p>
                     </div>
                     <Stores type="explore" tags={this.tags}>
-                        <LoadingStoreCard/>
+                        <LoadingCardStore />
                     </Stores>
                 </div>
             </div>

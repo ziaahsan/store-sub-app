@@ -26,30 +26,30 @@ module.exports = (app) => {
     });
 
     // Create a store notification
-    app.post('/api/store/notification', async(req, res) => {
-        // Post request data
-        const {body} = req;
-        // Create a newNotification instance
-        let newNotification = new StoreNotificationModel(body);
-        // Handles null error 
-        if (!newNotification.storeToken || !newNotification.subject
-            || !newNotification.message || !newNotification.priority || !newNotification.html
-            || !newNotification.deliveredDate) {
-                // Error, send message
-                res.status(400).json(
-                    {
-                        error: true,
-                        message: 'You are required to provide all params.'
-                    }
-                );
-        } else {
-            // No errors, create the storeNotificaion by @StoreNotificationModel.create
-            StoreNotificationModel.create(newNotification, (error, result) => {
-                result = JSON.parse(result);
+    // app.post('/api/store/notification', async(req, res) => {
+    //     // Post request data
+    //     const {body} = req;
+    //     // Create a newNotification instance
+    //     let newNotification = new StoreNotificationModel(body);
+    //     // Handles null error 
+    //     if (!newNotification.storeToken || !newNotification.subject
+    //         || !newNotification.message || !newNotification.priority || !newNotification.html
+    //         || !newNotification.deliveredDate) {
+    //             // Error, send message
+    //             res.status(400).json(
+    //                 {
+    //                     error: true,
+    //                     message: 'You are required to provide all params.'
+    //                 }
+    //             );
+    //     } else {
+    //         // No errors, create the storeNotificaion by @StoreNotificationModel.create
+    //         StoreNotificationModel.create(newNotification, (error, result) => {
+    //             result = JSON.parse(result);
 
-                if (error) res.status(400).send(error);
-                res.status(201).json(result);
-            });
-        }
-    });
+    //             if (error) res.status(400).send(error);
+    //             res.status(201).json(result);
+    //         });
+    //     }
+    // });
 }
