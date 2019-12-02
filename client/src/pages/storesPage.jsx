@@ -14,7 +14,7 @@ import Stores from '../components/cards/stores';
 import Featured from '../components/cards/featured';
 
 // Stores Page
-class StoresPage extends React.Component {    
+class StoresPage extends React.Component {
     // OnDraw
     render() {
         console.log("Rendeering Stores Page");
@@ -27,7 +27,7 @@ class StoresPage extends React.Component {
                                 <h1 className="uk-margin-remove">
                                     <b>Watch for Updates</b>
                                 </h1>
-                                <p className="uk-margin-remove-top">Look for a product and get live updates wherever you are.</p>
+                                <p className="uk-margin-remove">Look for a product and get live updates wherever you are.</p>
                             </div>
                         </div>
                     </div>

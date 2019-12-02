@@ -58,32 +58,8 @@ code {
 			border-color: #999;
 			color: #4b5260;
 		}
-		.uk-button-orange {
-			box-shadow: 0 5px 30px rgba(0,0,0,.3);
-			background: #f22f46;
-			border-radius: 4px;
-    		color: hsla(0,0%,100%,.85);
-			font-weight: 500;
-			text-transform: none;
-		}
-		.uk-button-blue {
-			box-shadow: 0 5px 30px rgba(0,0,0,.3);
-			background: #1e87f0;
-			border-radius: 4px;
-    		color: hsla(0,0%,100%,.85)!important;
-			font-weight: 500;
-			text-transform: none;
-		}
-		.uk-button-purple {
-			box-shadow: 0 5px 30px rgba(0,0,0,.3);
-			background: #5f5ccd;
-			border-radius: 4px;
-			color: #ffffff;
-			font-weight: 500;
-			text-transform: none;
-			border: 1px solid #4642c5;
-		}
-		.uk-button-secondary {
+		.uk-button-secondary,
+		.uk-button-secondary:hover {
 			box-shadow: 0 1px 2px 0 #0d65bd;
 			background: #1e87f0;
 			border-radius: 4px;
@@ -92,8 +68,33 @@ code {
 			text-transform: none;
 			border: 1px solid #0d65bd;
 		}
-		.uk-button-secondary:hover {
-			background: #107fed;
+		.uk-button-orange,
+		.uk-button-orange:hover {
+			box-shadow: 0 5px 30px rgba(0,0,0,.3);
+			background: #f22f46;
+			border-radius: 4px;
+    		color: hsla(0,0%,100%,.85);
+			font-weight: 500;
+			text-transform: none;
+		}
+		.uk-button-blue,
+		.uk-button-blue:hover {
+			box-shadow: 0 5px 30px rgba(0,0,0,.3);
+			background: #1e87f0;
+			border-radius: 4px;
+    		color: hsla(0,0%,100%,.85)!important;
+			font-weight: 500;
+			text-transform: none;
+		}
+		.uk-button-purple,
+		.uk-button-purple:hover {
+			box-shadow: 0 5px 30px rgba(0,0,0,.3);
+			background: #5f5ccd;
+			border-radius: 4px;
+			color: #ffffff;
+			font-weight: 500;
+			text-transform: none;
+			border: 1px solid #5f5ccd;
 		}
 		.uk-tooltip {
 			background-color: #000000;

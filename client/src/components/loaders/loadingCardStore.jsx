@@ -68,7 +68,7 @@ class LoadingCardStore extends React.Component {
                                     to={`/store/${store.token}`}>
                                     View Store
                                 </Link>
-                                <button className="blokk-font uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-right">
+                                <button style={{maxWidth: '215px'}} className="blokk-font uk-button uk-button-small uk-button-default uk-text-capitalize uk-text-truncate">
                                     Watch {store.name}
                                 </button>
                             </div>

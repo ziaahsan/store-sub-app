@@ -70,7 +70,7 @@ class RecentUpdates extends React.Component {
                                     <span className="uk-badge uk-box-shadow-medium">{store.notifications}</span>
                                 </div>
                                 <h5 className="uk-margin-remove uk-text-truncate">
-                                    <b>{renderHTML(store.name)}</b> - {renderHTML(store.description)}
+                                    <b>{renderHTML(store.name)}</b> <span className="uk-visible@s">- {renderHTML(store.description)}</span>
                                 </h5>
                             </div>
                         </div>
@@ -101,7 +101,7 @@ class RecentUpdates extends React.Component {
         
         return(
             <div className="uk-margin">
-                <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-6@m" uk-grid="true">
+                <div className="uk-height-auto uk-grid-small uk-child-width-1-2 uk-child-width-1-6@m" uk-grid="true">
                     {this.renderRecentUpdates()}
                 </div>
             </div>

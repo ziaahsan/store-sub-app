@@ -43,7 +43,7 @@ class LoadingCardRecentUpdates extends React.Component {
                                     <span className="blokk-font uk-badge uk-box-shadow-medium">{store.notifications}</span>
                                 </div>
                                 <h5 className="blokk-font uk-margin-remove uk-text-truncate">
-                                    <b>{store.name}</b> - {store.description}
+                                    <b>{store.name}</b> <span className="uk-visible@s">- {store.description}</span>
                                 </h5>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ class LoadingCardRecentUpdates extends React.Component {
         
         return(
             <div className="uk-margin">
-                <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-6@m" uk-grid="true">
+                <div className="uk-height-auto uk-grid-small uk-child-width-1-2 uk-child-width-1-6@m" uk-grid="true">
                     {this.renderUpdatesesCard()}
                 </div>
             </div>

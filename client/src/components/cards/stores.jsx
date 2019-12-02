@@ -110,7 +110,7 @@ class Stores extends React.Component {
                                         to={`/store/${store.slug}`}>
                                         View Store
                                     </Link>
-                                    <button style={{maxWidth: '215px'}} className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-text-truncate">
+                                    <button style={{maxWidth: '145px'}} className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-text-truncate">
                                         Watch {renderHTML(store.name)}
                                     </button>
                                 </div>

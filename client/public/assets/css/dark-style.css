@@ -2,6 +2,7 @@ html {
 	height: 100%;
 	min-height: 100%;
 	scroll-behavior: smooth;
+	color: #7e9cbb;
 }
 
 body {
@@ -52,10 +53,10 @@ code {
     /*anchor*/
         .uk-link-text a, a.uk-link-text {
             color: #7394b5;
-        }
+		}
     /*icon*/
         .uk-icon {
-            color: #375069;
+            color: #ffeff6;
 		}
 	/*labe*/
 		.uk-label {
@@ -79,11 +80,11 @@ code {
 		.uk-button-primary,
 		.uk-button-primary:hover {
 			box-shadow: 0 1px 1px 0 rgba(60, 66, 87, .12), 0 1px 0px 0 rgba(0, 0, 0, .12);
-			background: #c23f5a;
+			background: #3d5874;
 			border-radius: 4px;
-			color: #f3dadf;
+			color: #e2e9f0;
 			font-weight: 500;
-			border-color: #c23f5a;
+			border-color: #3d5874;
 		}
 		.uk-button-secondary,
 		.uk-button-secondary:hover {
@@ -95,7 +96,8 @@ code {
 			text-transform: none;
 			border: 1px solid #357cff;
 		}
-		.uk-button-orange {
+		.uk-button-orange,
+		.uk-button-orange:hover {
 			box-shadow: 0 5px 30px rgba(0,0,0,.3);
 			background: #f22f46;
 			border-radius: 4px;
@@ -103,7 +105,8 @@ code {
 			font-weight: 500;
 			text-transform: none;
 		}
-		.uk-button-blue {
+		.uk-button-blue,
+		.uk-button-blue:hover {
 			box-shadow: 0 5px 30px rgba(0,0,0,.3);
 			background: #1e87f0;
 			border-radius: 4px;
@@ -111,14 +114,15 @@ code {
 			font-weight: 500;
 			text-transform: none;
 		}
-		.uk-button-purple {
+		.uk-button-purple,
+		.uk-button-purple:hover {
 			box-shadow: 0 5px 30px rgba(0,0,0,.3);
 			background: #5f5ccd;
 			border-radius: 4px;
 			color: #ffffff;
 			font-weight: 500;
 			text-transform: none;
-			border: 1px solid #4642c5;
+			border: 1px solid #5f5ccd;
 		}
 		.uk-tooltip {
 			background-color: #000000;

@@ -1,7 +1,8 @@
 import React from 'react';
 
 // UIkit
-import 'uikit';
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
 
 // 
 import { Link } from 'react-router-dom';
@@ -73,13 +74,16 @@ class StoreNotifications extends React.Component {
 					<div className="store-notification uk-margin" key={`${this.type}.${index}`}>
 						<div className="uk-flex uk-flex-middle uk-grid-small" uk-grid="true">
 							<div className="uk-width-expand">
-								<h4 className="uk-margin-remove">
+								<h6 className="uk-margin-remove uk-hidden@s">
+									{renderHTML(notification.subject)}
+								</h6>
+								<h4 className="uk-margin-remove uk-visible@s">
 									{renderHTML(notification.subject)}
 								</h4>
-								<h5 className="uk-width-1-2 uk-margin-remove uk-text-truncate secondary-text-color">{renderHTML(notification.message)}</h5>
+								<h5 className="uk-width-1-2 uk-margin-remove uk-text-truncate secondary-text-color uk-visible@s">{renderHTML(notification.message)}</h5>
 								<p className="uk-margin-remove uk-text-small">{posted}</p>
 							</div>
-							<div className="uk-width-small uk-text-right">
+							<div className="uk-width-small uk-text-right uk-visible@s">
 								<Link
 									to={`/notification/${notification.token}`}
 									className="uk-button uk-button-small uk-button-default uk-text-capitalize"
@@ -142,7 +146,13 @@ class StoreNotifications extends React.Component {
 class StorePage extends React.Component {
 	constructor(props) {
 		super(props);
+		
+		// initalize the uikit icons
+		UIkit.use(Icons);
+		
+		// Type
 		this.type = 'store';
+		// State
 		this.state = {
 			isLoading: true,
 			slug: this.props.match.params.slug,
@@ -195,13 +205,13 @@ class StorePage extends React.Component {
 		// Show store
 		return (
 			<div className="uk-container uk-container-large">
-				<div className="uk-position-top-center uk-box-shadow-small" style={{top: '22px'}}>
+				{/* <div className="uk-position-top-center uk-box-shadow-small" style={{top: '22px'}}>
 					<div className="uk-text-left uk-notification-message" style={{padding: '8px'}}>
-						<p className="uk-margin-remove uk-width-small uk-text-small uk-text-center uk-text-truncate">
-							<b style={{fontWeight: '500'}}>Close <span className="uk-text-capitalize">{renderHTML(store.name)}</span></b>
+						<p className="uk-margin-remove uk-text-small uk-text-center uk-text-truncate">
+						<span uk-icon="icon: close;ratio: 0.85"></span> Close <span className="uk-text-capitalize">{renderHTML(store.name)}</span>
 						</p>
 					</div>
-				</div>
+				</div> */}
 				<div className="uk-width-1-1">
 					<div>
 						<h1 className="uk-margin-remove">
@@ -226,18 +236,18 @@ class StorePage extends React.Component {
 						{/* Notification Component */}
 						<div className="store-notifications uk-margin uk-card uk-card-default uk-card-body">
 							<div>
-								<div className="uk-float-right">
-									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize uk-margin-small-right">
+								<div className="uk-float-right uk-visible@s">
+									<button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize uk-margin-small-right">
 										Watch {renderHTML(store.name)}
 									</button>
-									<button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize">
-										More Options
+									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize">
+										<span uk-icon="icon: more;ratio: 0.85"></span>
 									</button>
 								</div>
-								<h5 className="uk-margin-remove">
-									<b>Updates</b>
-								</h5>
-								<p className="uk-margin-remove">Watch and recieve live updates from this {store.category}.</p>
+								<h3 className="uk-margin-remove">
+									Updates
+								</h3>
+								<p className="uk-margin-remove uk-visible@s">Watch and recieve live updates from this {store.category}.</p>
 							</div>
 							<div className="uk-margin">
 								<StoreNotifications storeToken={`${store.token}`} />

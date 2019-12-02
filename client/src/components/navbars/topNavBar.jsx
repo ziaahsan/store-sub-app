@@ -34,14 +34,26 @@ export default class TopNavBar extends React.Component {
                             </div>
                             <div className="nav-overlay uk-navbar-right">
                                 <ul className="uk-navbar-nav lp-navbar-nav">
-                                    <li className="uk-text-small">
+                                    <li className="uk-text-small uk-visible@s">
                                         <span>
                                             No signup required.
                                         </span>
-                                        <button
-                                            className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-margin-small-left">
-                                            Login
-                                        </button>
+                                        <span>
+                                            <Link
+                                                to="/login"
+                                                className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-margin-small-left">
+                                                Login
+                                            </Link>
+                                        </span>
+                                    </li>
+                                    <li className="uk-text-small uk-visible@s">
+                                        <span>
+                                            <Link
+                                                to="/"
+                                                className="uk-button uk-button-small uk-button-default uk-text-capitalize uk-margin-small-left">
+                                                Dark Mode
+                                            </Link>
+                                        </span>
                                     </li>
                                 </ul>
                             </div>
