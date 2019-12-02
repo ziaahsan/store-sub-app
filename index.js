@@ -20,9 +20,10 @@ const MailNotifierModel = require('./models/mailNotifierModel');
 
 // Express app
 const app = express();
-app.use(compression());
 app.use(cors());
 app.use(bodyParser.json());
+app.use(compression());
+
 
 //Import Routes after app due to @(app)
 require('./routes/eventRoute')(app);

@@ -17,7 +17,7 @@ module.exports = (app) => {
 
         // Check for page
         if (isNaN(parseInt(page)) || parseInt(page) < 0)
-            page = 0;
+            page = 1;
 
         // Get limit and check
         limit = parseInt(limit);

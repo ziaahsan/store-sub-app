@@ -93,15 +93,143 @@
 	"image": "---",
     "countryCode": "---"
 }
-
+-----------
 {
-	"email": "hifidlir@gmail.com",
-	"slug": "mcdonald-ca",
-	"name": "TechCrunch",
-	"description": "McDonalds.com is your hub for everything McDonalds. Find out more about our menu items and promotions today!",
+	"email": "",
+	"slug": "",
+	"name": "",
+	"description": "",
 	"category": "store",
-	"tags": "store,fast food",
-	"website": "https://www.mcdonalds.com/ca/en-ca.html",
+	"tags": "store,",
+	"website": "",
 	"image": "---",
     "countryCode": "ca"
 }
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "fragrantica-ca",
+	"name": "Fragrantica",
+	"description": "Fragrantica is an online encyclopedia of perfumes, a perfume magazine and a community of perfume lovers. Fragrantica informs their readers about new perfumes.",
+	"category": "website",
+	"tags": "store,website,encyclopedia,fragrance,perfumes,magazine",
+	"website": "https://www.fragrantica.com/",
+	"image": "---",
+    "countryCode": "---"
+}
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "beautyencounter-ca",
+	"name": "BeautyEncounter",
+	"description": "1,000’s of top perfume and fragrance brands at discounted prices on the net.",
+	"category": "store",
+	"tags": "store,fragrance,perfumes",
+	"website": "https://www.beautyencounter.com/",
+	"image": "---",
+    "countryCode": "ca"
+}
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "gap-ca",
+	"name": "GAP",
+	"description": "Shop womens, mens, maternity, kids & baby clothes at Gap online and find the perfect pair of jeans, t-shirts, dresses and more for the whole family.",
+	"category": "store",
+	"tags": "store,clothing,men,women,kids,affordable",
+	"website": "https://www.gapcanada.ca/?locale=en_CA",
+	"image": "---",
+    "countryCode": "ca"
+}
+----
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "bestbuy-ca",
+	"name": "BestBuy",
+	"description": "Get our Low Price Guarantee, online or in store, on a huge selection of electronics, appliances, furniture, fitness, travel, baby products and more!",
+	"category": "store",
+	"tags": "store,electronics,appliances,furniture,fitness,travel,baby products,affordable",
+	"website": "https://www.bestbuy.ca/en-ca",
+	"image": "---",
+    "countryCode": "ca"
+}
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "abercrombie-and-fitch-ca",
+	"name": "Abercrombie and Fitch",
+	"description": "Register for an Abercrombie & Fitch account & enjoy the benefits of faster check out, order history and save wish list.",
+	"category": "store",
+	"tags": "store,online,clothing,men,women",
+	"website": "https://www.abercrombie.com/shop/ca",
+	"image": "---",
+    "countryCode": "ca"
+}
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "hollister-ca",
+	"name": "Hollister",
+	"description": "Live for the unexpected. Live in the moments. Live like it's summer. Every. Single. Day. Jeans, T's, Hoodies, Coats & more designed to help you carpe the fit out of now.",
+	"category": "store",
+	"tags": "store,online,clothing,men,women,kids",
+	"website": "https://www.hollisterco.com/shop/ca",
+	"image": "---",
+    "countryCode": "ca"
+}
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "old-navy-ca",
+	"name": "Old Navy",
+	"description": "No description provided.",
+	"category": "store",
+	"tags": "store,clothing,men,women,kids",
+	"website": "https://www.oldnavy.ca/?locale=en_CA",
+	"image": "---",
+    "countryCode": "ca"
+}
+----
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "jc-penny-ca",
+	"name": "Jc Penny",
+	"description": "Enjoy great deals on furniture, bedding, window & home decor. Find clothing & shoes from your favorite brands for the whole family. FREE shipping online!",
+	"category": "store",
+	"tags": "store,furniture,bedding,window,home,decor",
+	"website": "https://www.jcpenney.com/",
+	"image": "---",
+    "countryCode": "ca"
+}
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "nordstrom-rack-ca",
+	"name": "Nordstrom rack",
+	"description": "Where style meets savings. Shop online or in store for brands you love at up to 70% off. Return by mail or to Nordstrom Rack stores. Free shipping on all orders over $49.",
+	"category": "store",
+	"tags": "store,clothing,women",
+	"website": "https://www.nordstromrack.com/",
+	"image": "---",
+    "countryCode": "ca"
+}
+{
+	"email": "hifidlir@gmail.com",
+	"slug": "apple-ca",
+	"name": "Apple",
+	"description": "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac and Apple TV, plus explore accessories, entertainment and expert device support.",
+	"category": "store",
+	"tags": "store,electronics,iphone,ipad,apple watch,mac,apple tv",
+	"website": "https://www.apple.com/ca/",
+	"image": "---",
+    "countryCode": "ca"
+}
+
+EBGames
+Macy's
+American eagle
+J crew
+Neiman Marcus
+Saks fifth
+Bloomingdale's
+Ralph Lauren
+Bed bath and beyond
+Ikea
+Wayfair
+Overstock
+Pier 1 imports
+Aldo
+Mark's

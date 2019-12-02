@@ -1,4 +1,6 @@
 import React from 'react';
+
+// UIkit
 import 'uikit';
 
 // Loaders component
@@ -21,6 +23,8 @@ class ExplorePage extends React.Component {
 
     // OnDraw
     render() {
+        console.log("Rendeering Explore Page");
+        
 		// Check loading, or null store
 		if (!this.tags) {
 			return (

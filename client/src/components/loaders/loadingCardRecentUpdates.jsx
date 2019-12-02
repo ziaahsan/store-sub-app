@@ -55,6 +55,8 @@ class LoadingCardRecentUpdates extends React.Component {
 
     // Render componenet
     render() {
+        console.log("Rendeering Loading Updates Card");
+        
         return(
             <div className="uk-margin">
                 <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-6@m" uk-grid="true">

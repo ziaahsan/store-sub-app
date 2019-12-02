@@ -81,6 +81,8 @@ class LoadingCardStore extends React.Component {
 
     // Render componenet
     render() {
+        console.log("Rendeering Loading Store Card");
+
         return(
             <div className="uk-margin uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="true">
                 {this.renderStoresCard()}

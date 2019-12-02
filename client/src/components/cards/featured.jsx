@@ -57,7 +57,9 @@ class Featured extends React.Component {
     }
 
     // Renders all the featured
-    renderFeatured(stores) {
+    renderFeatured() {
+        let { stores } = this.state;
+
         return(
             Object.keys(stores).map((index, key) => {
                 let store = stores[key];
@@ -103,6 +105,8 @@ class Featured extends React.Component {
 
     // Render component
     render() {
+        console.log("Rendeering Featured Cards");
+
         // Get state Vars
 		let {isLoading, stores} = this.state;
 
@@ -122,7 +126,7 @@ class Featured extends React.Component {
         return(
             <div className="uk-margin">
                 <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid="true">
-                   {this.renderFeatured(stores)}
+                   {this.renderFeatured()}
                 </div>
             </div>
         );

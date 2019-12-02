@@ -1,8 +1,20 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+// UIkit
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
+
+
 // Top Navigation
 export default class TopNavBar extends React.Component { 
+    constructor(props) {
+        super(props);
+
+        // initalize the uikit icons
+        UIkit.use(Icons);
+    }
+
     render() {
         return(
             <div className="uk-width-1-1">
@@ -27,7 +39,6 @@ export default class TopNavBar extends React.Component {
                                             No signup required.
                                         </span>
                                         <button
-                                            to="/login"
                                             className="uk-button uk-button-small uk-button-orange uk-text-capitalize uk-margin-small-left">
                                             Login
                                         </button>

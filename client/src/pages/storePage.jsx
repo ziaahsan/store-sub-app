@@ -1,4 +1,6 @@
 import React from 'react';
+
+// UIkit
 import 'uikit';
 
 // 
@@ -54,6 +56,13 @@ class StoreNotifications extends React.Component {
 		this.getNotifications();
 	}
 
+	// Check before updating component
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.isLoading !== nextState.isLoading)
+            return true;
+        return false;
+    }
+
 	// Render's notification
 	renderNotification(notifications) {
 		return(
@@ -67,7 +76,7 @@ class StoreNotifications extends React.Component {
 								<h4 className="uk-margin-remove">
 									{renderHTML(notification.subject)}
 								</h4>
-								<p className="uk-width-1-2 uk-margin-remove uk-text-truncate secondary-text-color">{renderHTML(notification.message)}</p>
+								<h5 className="uk-width-1-2 uk-margin-remove uk-text-truncate secondary-text-color">{renderHTML(notification.message)}</h5>
 								<p className="uk-margin-remove uk-text-small">{posted}</p>
 							</div>
 							<div className="uk-width-small uk-text-right">
@@ -87,6 +96,7 @@ class StoreNotifications extends React.Component {
 
 	// Draw component on screen
 	render() {
+		console.log("> Rendering Store Page Notifications");
 		// Get state Vars
 		let {isLoading, notifications} = this.state;
 
@@ -107,7 +117,23 @@ class StoreNotifications extends React.Component {
 
 		// Showing notifications
 		return (
-			this.renderNotification(notifications)
+			<div>
+				{/* Updates */}
+				{this.renderNotification(notifications)}
+
+				{/* Load More */}
+				{(notifications.length > 5) ?
+					<div className="uk-margin uk-margin-remove-bottom  uk-text-center">
+						<Link
+							to='/'
+							className="uk-button uk-button-small uk-button-blue uk-text-capitalize">
+							Load old Updates
+						</Link>
+					</div>
+					:
+					''
+				}
+			</div>
 		);
 	}
 }
@@ -142,8 +168,16 @@ class StorePage extends React.Component {
 		this.getStore();
 	}
 
+	// Check before updating component
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.isLoading !== nextState.isLoading)
+            return true;
+        return false;
+    }
+
 	// OnDraw
 	render() {
+		console.log("Rendeering Store Page");
 		// Get state Vars
 		let { isLoading, store } = this.state;
 
@@ -193,10 +227,10 @@ class StorePage extends React.Component {
 						<div className="store-notifications uk-margin uk-card uk-card-default uk-card-body">
 							<div>
 								<div className="uk-float-right">
-									<button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize uk-margin-small-right">
+									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize uk-margin-small-right">
 										Watch {renderHTML(store.name)}
 									</button>
-									<button className="uk-button uk-button-small uk-button-primary uk-text-capitalize">
+									<button className="uk-button uk-button-small uk-button-secondary uk-text-capitalize">
 										More Options
 									</button>
 								</div>

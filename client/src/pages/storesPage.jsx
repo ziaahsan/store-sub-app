@@ -1,4 +1,6 @@
 import React from 'react';
+
+// UIkit
 import 'uikit';
 
 // Loaders component
@@ -15,6 +17,7 @@ import Featured from '../components/cards/featured';
 class StoresPage extends React.Component {    
     // OnDraw
     render() {
+        console.log("Rendeering Stores Page");
         return(
             <div className="uk-container uk-container-large">
                 <div className="uk-width-1-1">

@@ -1,9 +1,12 @@
 import React from 'react';
-import 'uikit'
+
+// UIkit
+import 'uikit';
 
 class LoginPage extends React.Component {
 
     render() {
+        console.log("Rendeering Login Page");
         return (
             <div className="uk-position-center">
                 <div className="uk-text-center uk-width-large">

@@ -38,10 +38,12 @@ code {
 			color: #222222;
 		}
 		.uk-notification-message {
-			background: #C51F5D;
-			border: 1px solid #141D26;
+			background: rgba(216, 12, 76, 0.9);
+			border: 1px solid rgba(216, 12, 76, 0.9);
 			border-radius: 4px;
-            box-shadow: 0 5px 30px rgba(0,0,0,.3);
+			box-shadow: 0 5px 30px rgba(0,0,0,.3);
+			backdrop-filter: blur(8px);
+    		-webkit-backdrop-filter: blur(8px);
         }
     /*Hr*/
         .uk-hr, hr {
@@ -77,11 +79,11 @@ code {
 		.uk-button-primary,
 		.uk-button-primary:hover {
 			box-shadow: 0 1px 1px 0 rgba(60, 66, 87, .12), 0 1px 0px 0 rgba(0, 0, 0, .12);
-			background: #3b69cd;
+			background: #c23f5a;
 			border-radius: 4px;
-			color: #ebf0fa;
+			color: #f3dadf;
 			font-weight: 500;
-			border-color: #3b69cd;
+			border-color: #c23f5a;
 		}
 		.uk-button-secondary,
 		.uk-button-secondary:hover {

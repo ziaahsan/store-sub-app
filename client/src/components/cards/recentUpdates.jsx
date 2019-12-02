@@ -56,7 +56,9 @@ class RecentUpdates extends React.Component {
     }
     
     // Renders all the updates
-    renderRecentUpdates(stores) {
+    renderRecentUpdates() {
+        let { stores } = this.state;
+
         return(
             Object.keys(stores).map((index, key) => {
                 let store = stores[key];
@@ -79,6 +81,8 @@ class RecentUpdates extends React.Component {
     }
     // Render component
     render() {
+        console.log("Rendeering Updates Cards");
+
         // Get state Vars
 		let {isLoading, stores} = this.state;
 
@@ -98,7 +102,7 @@ class RecentUpdates extends React.Component {
         return(
             <div className="uk-margin">
                 <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-6@m" uk-grid="true">
-                    {this.renderRecentUpdates(stores)}
+                    {this.renderRecentUpdates()}
                 </div>
             </div>
         );

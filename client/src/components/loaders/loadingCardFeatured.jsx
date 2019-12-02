@@ -82,6 +82,8 @@ class LoadingCardFeatured extends React.Component {
 
     // Render componenet
     render() {
+        console.log("Rendeering Loading Featured Card");
+
         return(
             <div className="uk-margin">
                 <div className="uk-height-auto uk-grid-small uk-child-width-1-2@s uk-child-width-1-4@m" uk-grid="true">

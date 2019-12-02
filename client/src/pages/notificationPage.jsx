@@ -1,5 +1,8 @@
 import React from 'react';
 
+// UIkit
+import 'uikit';
+
 // 
 import IframeResizer from 'iframe-resizer-react'
 import { format } from 'timeago.js';
@@ -48,6 +51,7 @@ class NotificationPage extends React.Component {
 
 	// OnDraw
 	render() {
+		console.log("Rendeering Notification Page");
         // Get state Vars
         let {isLoading, notification} = this.state;
         

@@ -3,6 +3,8 @@ import React from 'react';
 // Loading component
 class LoadingPage extends React.Component {
     render() {
+        console.log("Rendeering Loading Page");
+
         return (
             <div>
 				<div className="uk-position-center uk-text-center">
