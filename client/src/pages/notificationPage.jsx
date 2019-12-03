@@ -51,7 +51,6 @@ class NotificationPage extends React.Component {
 
 	// OnDraw
 	render() {
-		console.log("Rendeering Notification Page");
         // Get state Vars
         let {isLoading, notification} = this.state;
         

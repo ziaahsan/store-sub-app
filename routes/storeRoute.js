@@ -4,16 +4,16 @@ const StoreModel = require('../models/storeModel');
 const { check, validationResult } = require('express-validator');
 
 module.exports = (app) => {
-    // Get :tag stores
-    app.get('/api/stores/tag', async(req, res) => {
+    // Get store by query[name,page,limit,orderby]
+    app.get('/api/store/tag', async(req, res) => {
         // Query params
         let {name, page, limit, orderby} = req.query;
 
-        // Encode URI
-        name = decodeURIComponent(String(name));
-        page = decodeURIComponent(String(page));
-        limit = decodeURIComponent(String(limit));
-        orderby = decodeURIComponent(String(orderby));
+        // Decode URI
+        name = encodeURIComponent(String(name));
+        page = encodeURIComponent(String(page));
+        limit = encodeURIComponent(String(limit));
+        orderby = encodeURIComponent(String(orderby));
 
         // Check for page
         if (isNaN(parseInt(page)) || parseInt(page) < 0)
@@ -36,38 +36,64 @@ module.exports = (app) => {
             res.status(400).json(
                 {
                     error: true,
-                    message: 'You are required to provide name, page, and orderby.'
+                    message: 'You are required to provide name, and orderby ["alphabetically", "popular", "recentUpdates"].',
+                    response: null
                 }
             );
         } else {
+            // Fetch the tags by query params
             StoreModel.getByTag(name, limit, offset, orderby, (error, store) => {
+                // Store data to json, since string was returned
                 store = JSON.parse(store);
-    
-                if (error) res.status(400).send(error);
-                res.status(200).json(store);
+                
+                // Show db error
+                if (error) res.status(500).send(error);
+
+                // Show the success message
+                res.status(200).json(
+                    {
+                        error: null,
+                        message: 'Successfully fetched',
+                        response: store
+                    }
+                );
             });
         }
     });
 
-    // Get :slug store
+    // Get store by :slug
     app.get('/api/store/:slug', async(req, res) => {
+        // Get the param :slug and decode uri
         let {slug} = req.params;
-        slug = decodeURIComponent(String(slug));
+        slug = encodeURIComponent(String(slug));
 
-        if (!slug) {
+        // check if slug is empty or length is not > 2
+        if (!slug || slug.length < 2) {
             // Error, send message
             res.status(400).json(
                 {
                     error: true,
-                    message: 'You are required to provide slug.'
+                    message: 'You are required to provide slug',
+                    response: null
                 }
             );
         } else {
+            // Fetch the store by :slug
             StoreModel.getBySlug(slug, (error, store) => {
+                // Store data to json, since string was returned
                 store = JSON.parse(store);
 
-                if (error) res.status(400).send(error);
-                res.status(200).json(store);
+                // Show db error
+                if (error) res.status(500).send(error);
+
+                // Show the success message
+                res.status(200).json(
+                    {
+                        error: null,
+                        message: 'Successfully fetched',
+                        response: store
+                    }
+                );
             });
         }
     });
@@ -89,9 +115,11 @@ module.exports = (app) => {
             // Handle error of body params
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(422).json(
+                return res.status(400).json(
                     {
-                        errors: errors.array()
+                        error: true,
+                        message: errors.array(),
+                        response: null
                     }
                 );
             }
@@ -102,26 +130,23 @@ module.exports = (app) => {
             // Create a newStore instance
             let newStore = new StoreModel(body);
 
-            // Handles null error 
-            if (!newStore.token || !newStore.name 
-                || !newStore.slug || !newStore.name || !newStore.description || !newStore.category
-                || !newStore.tags || !newStore.website || !newStore.image || !newStore.countryCode) {
-                    // Error, send message
-                    return res.status(400).json(
-                        {
-                            error: true,
-                            message: 'You are required to provide all params.'
-                        }
-                    );
-            } else {
-                // No errors, create the store by @StoreMode.create
-                StoreModel.create(newStore, (error, result) => {
-                    result = JSON.parse(result);
+            // No errors, create the store @StoreModel.create
+            StoreModel.create(newStore, (error, result) => {
+                // Store data to json, since string was returned
+                result = JSON.parse(result);
 
-                    if (error) res.status(400).send(error);
-                    res.status(201).json(result);
-                });
-            }
+                // Show db error
+                if (error) res.status(500).send(error);
+                
+                // Show the success message
+                res.status(201).json(
+                    {
+                        error: null,
+                        message: 'Successfully posted',
+                        response: result
+                    }
+                );
+            });
         }
     );
 
@@ -142,9 +167,11 @@ module.exports = (app) => {
             // Handle error of body params
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(422).json(
+                return res.status(400).json(
                     {
-                        errors: errors.array()
+                        error: true,
+                        message: errors.array(),
+                        response: null
                     }
                 );
             }
@@ -155,25 +182,23 @@ module.exports = (app) => {
             // Update instance
             let updateStore = new StoreModel(body);
 
-            // Handles null error 
-            if (!updateStore.token || !updateStore.name 
-                || !updateStore.slug || !updateStore.name || !updateStore.description || !updateStore.category
-                || !updateStore.tags || !updateStore.website || !updateStore.image || !updateStore.countryCode) {
-                    // Error, send message
-                    res.status(400).json(
-                        {
-                            error: true,
-                            message: 'You are required to provide all params.'
-                        }
-                    );
-            } else {
-                StoreModel.update(body, (error, result) => {
-                    result = JSON.parse(result);
-                    
-                    if (error) res.status(400).send(error);
-                    res.status(202).json(result);
-                });
-            }
+            // No errors, update the store @StoreModel.update
+            StoreModel.update(updateStore, (error, result) => {
+                // Store data to json, since string was returned
+                result = JSON.parse(result);
+
+                // Show db error
+                if (error) res.status(400).send(error);
+
+                // Show the success message
+                res.status(202).json(
+                    {
+                        error: null,
+                        message: 'Successfully put',
+                        response: result
+                    }
+                );
+            });
         }
     );
 }

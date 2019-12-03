@@ -3,8 +3,6 @@ import React from 'react';
 // No store was found
 export default class NoPageFound extends React.Component {
 	render() {
-		console.log("Rendeering No Page Found");
-		
 		return (
 			<div className="uk-position-small uk-position-center">
 				<div className="uk-text-center">

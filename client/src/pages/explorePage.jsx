@@ -23,7 +23,6 @@ class ExplorePage extends React.Component {
 
     // OnDraw
     render() {
-        console.log("Rendeering Explore Page");
         
 		// Check loading, or null store
 		if (!this.tags) {

@@ -1,7 +1,7 @@
 "use strict";
 // Package import
-const database = require('../database');
-const crypto = require('crypto-random-string');
+const Database = require('../database');
+const Crypto = require('crypto-random-string');
 
 // Model import
 const EventModel = require('./eventModel');
@@ -10,7 +10,7 @@ class StoreModel {
     // StoreModel contructor
     constructor(store) {
         // This object
-        this.token = crypto({length: 16, type: 'url-safe'});
+        this.token = Crypto({length: 16, type: 'url-safe'});
         this.email = store.email;
         this.slug = store.slug;
         this.name = store.name;
@@ -24,7 +24,7 @@ class StoreModel {
   
     // Get a store by token
     static getByToken(token, result) {
-        database.query("SELECT * FROM `ma_stores` WHERE `token` = ?", token, (error, res) => {
+        Database.query("SELECT * FROM `ma_stores` WHERE `token` = ?", token, (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);
@@ -37,7 +37,7 @@ class StoreModel {
 
     // Get a store by token
     static getBySlug(slug, result) {
-        database.query("SELECT * FROM `ma_stores` WHERE `slug` = ?", slug, (error, res) => {
+        Database.query("SELECT * FROM `ma_stores` WHERE `slug` = ?", slug, (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);
@@ -50,7 +50,7 @@ class StoreModel {
 
     // Get a store by email
     static getByEmail(email, result) {
-        database.query("SELECT * FROM `ma_stores` WHERE `email` = ?", email, (error, res) => {
+        Database.query("SELECT * FROM `ma_stores` WHERE `email` = ?", email, (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);
@@ -93,7 +93,7 @@ class StoreModel {
                 break;
         }
 
-        database.query(strQuery, [tag, offset, limit], (error, res) => {
+        Database.query(strQuery, [tag, offset, limit], (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);
@@ -106,7 +106,7 @@ class StoreModel {
 
     // Create a new store
     static create(newStore, result) {
-        database.query("INSERT INTO `ma_stores` SET ?", newStore, (error, res) => {
+        Database.query("INSERT INTO `ma_stores` SET ?", newStore, (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);
@@ -123,7 +123,7 @@ class StoreModel {
 
     // Update a store
     static update(store, result) {
-        database.query("UPDATE `ma_stores` SET ? WHERE token = ?", [store, store.token], (error, res) => {
+        Database.query("UPDATE `ma_stores` SET ? WHERE token = ?", [store, store.token], (error, res) => {
             if (error) {
                 console.log(error);
                 result(error, null);

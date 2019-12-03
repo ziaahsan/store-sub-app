@@ -34,19 +34,21 @@ class Featured extends React.Component {
     }
 
     // Fetch the stores from api databse
-    async getStoresByTags() {
-        const response = await StoreService.getStoresByTags(this.tags, this.page.number, this.page.orderby, this.page.limit);
+    async getStoreByTags() {
+        // Get result
+        const result = await StoreService.getStoreByTags(this.tags, this.page.number, this.page.orderby, this.page.limit);
+        
         // Update the state
 		this.setState({
             isLoading: false,
-            stores: response.data.length > 0 ? response.data : null
+            stores: result.data.response.length > 0 ? result.data.response : null
 		});
     }
     
     // When component is ready, 
     componentDidMount() {
         // Fetch the all stores
-        this.getStoresByTags();
+        this.getStoreByTags();
     }
 
     // Check before updating component
@@ -105,8 +107,6 @@ class Featured extends React.Component {
 
     // Render component
     render() {
-        console.log("Rendeering Featured Cards");
-
         // Get state Vars
 		let {isLoading, stores} = this.state;
 

@@ -100,7 +100,6 @@ class StoreNotifications extends React.Component {
 
 	// Draw component on screen
 	render() {
-		console.log("> Rendering Store Page Notifications");
 		// Get state Vars
 		let {isLoading, notifications} = this.state;
 
@@ -163,12 +162,12 @@ class StorePage extends React.Component {
 	// Fetch store from api using :slug
 	async getStore() {
 		let {slug} = this.state;
-		let response = await StoreService.getStoreBySlug(slug);
+		let result = await StoreService.getStoreBySlug(slug);
 
 		// Update the state
 		this.setState({
 			isLoading: false,
-			store: response.data.length > 0 ? response.data[0] : null
+			store: result.data.response.length > 0 ? result.data.response[0] : null
 		});
 	}
 
@@ -187,7 +186,6 @@ class StorePage extends React.Component {
 
 	// OnDraw
 	render() {
-		console.log("Rendeering Store Page");
 		// Get state Vars
 		let { isLoading, store } = this.state;
 
