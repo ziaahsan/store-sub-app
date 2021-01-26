@@ -1,9 +1,22 @@
-# store-sub-app
+## Installtion and Usage
 
-# Subto
+Simply clone and `npm run dev` which should trigger `"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""` command. If you see error follow the installation below, and update the `dependencies`, and `devDependencies` pacakages if needed for both server and client.
 
-Using NodeJS as back-end, and ReactJS as front-end we were able to update the client with realtime notifications.
-This way they could subscribe to their favourite stores and stay updated.
+Lastly dont forget to import the .sql file from the root folder `mysubs.sql`
 
-------
-![alt text](https://ziaahsan.github.io/assets/images/subto/d1.gif)
+```bash
+# Simply Clone this repository
+git clone https://github.com/ziaahsan/store-sub-app
+cd store-sub-app
+# install the dependencies for both the server root package.json and
+# client folder (react app)
+npm install . # More information https://docs.npmjs.com/cli/v6/commands/npm-install
+```
+---
+
+## Purpose of SubTo website was:
+0. I wanted to learn how to integrate NodeJS and ReactJS
+1. The app is sufficient but it should be treated as simple very buggy app
+2. Goal was to learn the integration of Server and Client Routes, and simply communication between client, server and database
+
+`preview/` contains all the necessary preview images of the web app.
