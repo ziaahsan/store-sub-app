@@ -32,19 +32,17 @@ require('./routes/storeNotificationRoute')(app);
 
 // Production env
 if (process.env.NODE_ENV === 'production') {
-    /* DONT KNOW WHAT THIS CODE DOES */
     app.use(express.static('client/build'));
 
     const path = require('path');
     app.get('*', (req,res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
-    /* ***************************** */
 }
 
 // Mail notifier
-let mailNotifier = new MailNotifierModel(config.get("imap").username, config.get("imap").password);
-mailNotifier.start();
+// let mailNotifier = new MailNotifierModel(config.get("imap").username, config.get("imap").password);
+// mailNotifier.start();
 
 // App's port
 const PORT = process.env.PORT || config.get("server").port;

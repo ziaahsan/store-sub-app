@@ -1,5 +1,5 @@
 # Folders to ignore
-config
+config/default.json
 node_modules
 
 # Files to ignore

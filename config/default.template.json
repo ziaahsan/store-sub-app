@@ -1,0 +1,33 @@
+{
+    "server": {
+        "env": "developement",
+        "port": 5000
+    },
+    
+    "session": {
+        "secret": "keyboard cat"
+    },
+
+    "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "",
+        "database": "mysubs"
+    },
+    
+    "imap": {
+        "username": "",
+        "password": ""
+    },
+
+    "aws": {
+        "ses": {
+            "from": {
+               "default": "'DOMAIN_NAME' <USER@DOMAIN.com>"
+            },
+            "accessKeyId": "",
+            "secretAccessKey": "",
+            "region": "us-east-1"
+        }
+    }
+}
